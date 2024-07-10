@@ -1,3 +1,5 @@
+import org.gradle.api.JavaVersion
+
 object Versions {
     const val core = "1.9.0"
     const val lifecycle = "2.6.2"
@@ -46,7 +48,8 @@ object Config {
     const val applicationId = "com.testdex"
     const val versionName = "1.0"
 
-    const val jvmTarget = "1.8"
+    const val jvmTarget = "17"
+    val javaVersion = JavaVersion.VERSION_17
 }
 
 object Test {
