@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -66,4 +68,17 @@ dependencies {
     androidTestImplementation(Test.composeTest)
     debugImplementation(Debug.composeTooling)
     debugImplementation(Debug.composeManifest)
+
+    implementation(Libs.composeNavigation)
+
+    // Hilt
+    implementation(Libs.hilt)
+    kapt(Libs.hiltCompiler)
+
+    // Arrow for Either use
+    runtimeOnly(Libs.arrow)
+}
+
+kapt {
+    correctErrorTypes = true
 }

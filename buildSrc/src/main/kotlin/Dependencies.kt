@@ -4,11 +4,18 @@ object Versions {
     const val compose = "1.8.2"
     const val composeBom = "2023.03.00"
     const val material3 = "material3"
+    const val composeNavigation = "2.7.7"
 
     // Testing
     const val junit = "4.13.2"
     const val junitExt = "1.1.5"
     const val expresso = "3.5.1"
+
+    // Hilt
+    const val hilt = "2.44"
+
+    // Arrow
+    const val arrow = "1.2.4"
 }
 
 object Libs {
@@ -20,6 +27,14 @@ object Libs {
     const val composeUIGraphics = "androidx.compose.ui:ui-graphics"
     const val composePreview = "androidx.compose.ui:ui-tooling-preview"
     const val material3 = "androidx.compose.material3:${Versions.material3}"
+    const val composeNavigation = "androidx.navigation:navigation-compose:${Versions.composeNavigation}"
+
+    // Hilt
+    const val hilt = "com.google.dagger:hilt-android:${Versions.hilt}"
+    const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
+
+    // Arrow
+    const val arrow = "io.arrow-kt:arrow-core:${Versions.arrow}"
 }
 
 object Config {
