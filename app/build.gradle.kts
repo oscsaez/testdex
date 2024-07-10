@@ -4,15 +4,15 @@ plugins {
 }
 
 android {
-    namespace = "com.testdex"
-    compileSdk = 34
+    namespace = Config.namespace
+    compileSdk = Config.compileSdk
 
     defaultConfig {
-        applicationId = "com.testdex"
-        minSdk = 33
-        targetSdk = 34
+        applicationId = Config.applicationId
+        minSdk = Config.minSdk
+        targetSdk = Config.targetSdk
         versionCode = 1
-        versionName = "1.0"
+        versionName = Config.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -34,7 +34,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = Config.jvmTarget
     }
     buildFeatures {
         compose = true
@@ -51,19 +51,19 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
-    implementation("androidx.activity:activity-compose:1.8.2")
-    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-graphics")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.material3:material3")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
-    debugImplementation("androidx.compose.ui:ui-tooling")
-    debugImplementation("androidx.compose.ui:ui-test-manifest")
+    implementation(Libs.core)
+    implementation(Libs.lifecycle)
+    implementation(Libs.compose)
+    implementation(platform(Libs.composeBom))
+    implementation(Libs.composeUI)
+    implementation(Libs.composeUIGraphics)
+    implementation(Libs.composePreview)
+    implementation(Libs.material3)
+    testImplementation(Test.junit)
+    androidTestImplementation(Test.junitExt)
+    androidTestImplementation(Test.expresso)
+    androidTestImplementation(platform(Libs.composeBom))
+    androidTestImplementation(Test.composeTest)
+    debugImplementation(Debug.composeTooling)
+    debugImplementation(Debug.composeManifest)
 }
