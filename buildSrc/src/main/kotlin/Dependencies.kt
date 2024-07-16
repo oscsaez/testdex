@@ -18,6 +18,9 @@ object Versions {
 
     // Arrow
     const val arrow = "1.2.4"
+
+    // Retrofit
+    const val retrofit = "2.9.0"
 }
 
 object Libs {
@@ -37,6 +40,10 @@ object Libs {
 
     // Arrow
     const val arrow = "io.arrow-kt:arrow-core:${Versions.arrow}"
+
+    // Retrofit
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    const val retrofitCoverter = "com.squareup.retrofit2:converter-scalars:${Versions.retrofit}"
 }
 
 object Config {

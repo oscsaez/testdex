@@ -77,6 +77,10 @@ dependencies {
 
     // Arrow for Either use
     runtimeOnly(Libs.arrow)
+
+    // Retrofit
+    implementation(Libs.retrofit)
+    implementation(Libs.retrofitCoverter)
 }
 
 kapt {
