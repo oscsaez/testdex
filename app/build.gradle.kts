@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("androidx.room") version Versions.room apply false
 }
 
 android {
@@ -13,10 +14,10 @@ android {
         applicationId = Config.applicationId
         minSdk = Config.minSdk
         targetSdk = Config.targetSdk
-        versionCode = 1
+        versionCode = Config.versionCode
         versionName = Config.versionName
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = Config.testInstrumentationRunner
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -42,7 +43,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = Config.kotlinCompilerExtensionVersion
     }
     packaging {
         resources {
@@ -81,6 +82,11 @@ dependencies {
     // Retrofit
     implementation(Libs.retrofit)
     implementation(Libs.retrofitCoverter)
+
+    // Room
+    implementation(Libs.roomRuntime)
+    annotationProcessor(Libs.roomCompiler)
+    kapt(Libs.roomCompiler)
 }
 
 kapt {

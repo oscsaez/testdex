@@ -21,6 +21,9 @@ object Versions {
 
     // Retrofit
     const val retrofit = "2.9.0"
+
+    // Room
+    const val room = "2.6.1"
 }
 
 object Libs {
@@ -44,6 +47,11 @@ object Libs {
     // Retrofit
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val retrofitCoverter = "com.squareup.retrofit2:converter-scalars:${Versions.retrofit}"
+
+    // Room
+    const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
+    const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
+    const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
 }
 
 object Config {
@@ -53,10 +61,15 @@ object Config {
 
     const val namespace = "com.testdex"
     const val applicationId = "com.testdex"
+    const val versionCode = 1
     const val versionName = "1.0"
+
+    const val testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
     const val jvmTarget = "17"
     val javaVersion = JavaVersion.VERSION_17
+
+    const val kotlinCompilerExtensionVersion = "1.4.3"
 }
 
 object Test {
