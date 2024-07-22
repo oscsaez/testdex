@@ -69,7 +69,7 @@ private val LightYellowColorScheme = lightColorScheme(
 fun TestdexTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     theme: Theme = Theme.Red,
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
