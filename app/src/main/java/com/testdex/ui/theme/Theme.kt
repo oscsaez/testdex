@@ -15,32 +15,60 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
-private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+enum class Theme {
+    Red,
+    Blue,
+    Yellow
+}
+
+// -------- Dark themes --------
+private val DarkRedColorScheme = darkColorScheme(
+    primary = Red,
+    onPrimary = Light,
+    background = Dark,
+    onBackground = Light
 )
 
-private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+private val DarkBlueColorScheme = darkColorScheme(
+    primary = Blue,
+    onPrimary = Light,
+    background = Dark,
+    onBackground = Light
+)
 
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+private val DarkYellowColorScheme = darkColorScheme(
+    primary = Yellow,
+    onPrimary = Light,
+    background = Dark,
+    onBackground = Light
+)
+
+// -------- Light themes --------
+private val LightRedColorScheme = lightColorScheme(
+    primary = Red,
+    onPrimary = Light,
+    background = Light,
+    onBackground = Dark
+)
+
+private val LightBlueColorScheme = lightColorScheme(
+    primary = Blue,
+    onPrimary = Light,
+    background = Light,
+    onBackground = Dark
+)
+
+private val LightYellowColorScheme = lightColorScheme(
+    primary = Yellow,
+    onPrimary = Light,
+    background = Light,
+    onBackground = Dark
 )
 
 @Composable
 fun TestdexTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
+    theme: Theme = Theme.Red,
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
@@ -50,8 +78,7 @@ fun TestdexTheme(
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
 
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
+        else -> themeSelected(darkTheme, theme)
     }
     val view = LocalView.current
     if (!view.isInEditMode) {
@@ -67,4 +94,17 @@ fun TestdexTheme(
         typography = Typography,
         content = content
     )
+}
+
+fun themeSelected(darkTheme: Boolean, theme: Theme) = when(darkTheme) {
+    true -> when(theme) {
+        Theme.Red -> DarkRedColorScheme
+        Theme.Blue -> DarkBlueColorScheme
+        Theme.Yellow -> DarkYellowColorScheme
+    }
+    false -> when(theme) {
+        Theme.Red -> LightRedColorScheme
+        Theme.Blue -> LightBlueColorScheme
+        Theme.Yellow -> LightYellowColorScheme
+    }
 }
