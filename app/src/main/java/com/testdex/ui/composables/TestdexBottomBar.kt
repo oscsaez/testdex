@@ -11,10 +11,12 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import com.testdex.ui.navigation.TestdexScreen
+import com.testdex.ui.utils.roundedTopBordersShape
 
 @Composable
 fun TestdexBottomBar(
@@ -25,7 +27,7 @@ fun TestdexBottomBar(
     var selectedIndex by remember { mutableIntStateOf(0) }
 
     NavigationBar(
-        modifier = modifier,
+        modifier = modifier.clip(roundedTopBordersShape()),
         containerColor = MaterialTheme.colorScheme.primary,
         contentColor = Color.Transparent
     ) {
@@ -39,13 +41,13 @@ fun TestdexBottomBar(
                 icon = {
                     Icon(
                         painter = painterResource(id = screen.resIdIcon),
-                        contentDescription = "${stringResource(id = screen.resIdName)} icon",
-                        tint = if(selectedIndex == index) MaterialTheme.colorScheme.onBackground
-                            else MaterialTheme.colorScheme.onPrimary
+                        contentDescription = "${stringResource(id = screen.resIdName)} icon"
                     )
                 },
                 colors = NavigationBarItemDefaults.colors(
-                    indicatorColor = MaterialTheme.colorScheme.primary
+                    indicatorColor = MaterialTheme.colorScheme.primary,
+                    selectedIconColor = MaterialTheme.colorScheme.onBackground,
+                    unselectedIconColor = MaterialTheme.colorScheme.onPrimary
                 )
             )
         }
