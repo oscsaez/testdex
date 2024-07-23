@@ -6,4 +6,12 @@
     <string name="types_table_screen_title">Types table</string>
     <string name="favorites_screen_title">Favorites</string>
     <string name="settings_screen_title">Settings</string>
+
+    <!-- Settings -->
+    <string name="dark_theme_text">Dark Theme</string>
+    <string name="light_theme_text">Light Theme</string>
+    <string name="red_color_theme_text">Red</string>
+    <string name="blue_color_theme_text">Blue</string>
+    <string name="yellow_color_theme_text">Yellow</string>
+    <string name="colors_theme_text">Colors</string>
 </resources>
