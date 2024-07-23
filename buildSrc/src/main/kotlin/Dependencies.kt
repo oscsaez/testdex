@@ -15,6 +15,7 @@ object Versions {
 
     // Hilt
     const val hilt = "2.44"
+    const val hiltNavigation = "1.0.0"
 
     // Arrow
     const val arrow = "1.2.4"
@@ -24,11 +25,15 @@ object Versions {
 
     // Room
     const val room = "2.6.1"
+
+    // Datastore preferences
+    const val datastorePreferences = "1.0.0"
 }
 
 object Libs {
     const val core = "androidx.core:core-ktx:${Versions.core}"
     const val lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
+    const val lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
     const val compose = "androidx.activity:activity-compose:${Versions.compose}"
     const val composeBom = "androidx.compose:compose-bom:${Versions.composeBom}"
     const val composeUI = "androidx.compose.ui:ui"
@@ -40,6 +45,7 @@ object Libs {
     // Hilt
     const val hilt = "com.google.dagger:hilt-android:${Versions.hilt}"
     const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
+    const val hiltNavigation = "androidx.hilt:hilt-navigation-compose:${Versions.hiltNavigation}"
 
     // Arrow
     const val arrow = "io.arrow-kt:arrow-core:${Versions.arrow}"
@@ -52,6 +58,9 @@ object Libs {
     const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
     const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
     const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
+
+    // Datastore preferences
+    const val datastorePreferences = "androidx.datastore:datastore-preferences:${Versions.datastorePreferences}"
 }
 
 object Config {

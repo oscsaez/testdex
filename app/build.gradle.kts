@@ -56,6 +56,7 @@ dependencies {
 
     implementation(Libs.core)
     implementation(Libs.lifecycle)
+    implementation(Libs.lifecycleViewModel)
     implementation(Libs.compose)
     implementation(platform(Libs.composeBom))
     implementation(Libs.composeUI)
@@ -74,6 +75,7 @@ dependencies {
 
     // Hilt
     implementation(Libs.hilt)
+    implementation(Libs.hiltNavigation)
     kapt(Libs.hiltCompiler)
 
     // Arrow for Either use
@@ -87,6 +89,9 @@ dependencies {
     implementation(Libs.roomRuntime)
     annotationProcessor(Libs.roomCompiler)
     kapt(Libs.roomCompiler)
+
+    // Datastore preferences
+    implementation(Libs.datastorePreferences)
 }
 
 kapt {

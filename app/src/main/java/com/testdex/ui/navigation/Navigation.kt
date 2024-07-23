@@ -6,6 +6,7 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.testdex.ui.screens.settings.SettingsScreen
 
 @Composable
 fun Navigation(
@@ -27,7 +28,7 @@ fun Navigation(
             /*TODO*/
         }
         composable(TestdexScreen.TestdexSettingsScreen.route) {
-            /*TODO*/
+            SettingsScreen()
         }
     }
 }

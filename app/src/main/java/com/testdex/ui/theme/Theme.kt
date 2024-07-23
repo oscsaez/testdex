@@ -14,12 +14,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
-
-enum class Theme {
-    Red,
-    Blue,
-    Yellow
-}
+import com.testdex.ui.model.ThemeColor
 
 // -------- Dark themes --------
 private val DarkRedColorScheme = darkColorScheme(
@@ -68,7 +63,7 @@ private val LightYellowColorScheme = lightColorScheme(
 @Composable
 fun TestdexTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    theme: Theme = Theme.Red,
+    theme: ThemeColor = ThemeColor.Red,
     dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
@@ -96,15 +91,15 @@ fun TestdexTheme(
     )
 }
 
-fun themeSelected(darkTheme: Boolean, theme: Theme) = when(darkTheme) {
+fun themeSelected(darkTheme: Boolean, theme: ThemeColor) = when(darkTheme) {
     true -> when(theme) {
-        Theme.Red -> DarkRedColorScheme
-        Theme.Blue -> DarkBlueColorScheme
-        Theme.Yellow -> DarkYellowColorScheme
+        ThemeColor.Red -> DarkRedColorScheme
+        ThemeColor.Blue -> DarkBlueColorScheme
+        ThemeColor.Yellow -> DarkYellowColorScheme
     }
     false -> when(theme) {
-        Theme.Red -> LightRedColorScheme
-        Theme.Blue -> LightBlueColorScheme
-        Theme.Yellow -> LightYellowColorScheme
+        ThemeColor.Red -> LightRedColorScheme
+        ThemeColor.Blue -> LightBlueColorScheme
+        ThemeColor.Yellow -> LightYellowColorScheme
     }
 }
