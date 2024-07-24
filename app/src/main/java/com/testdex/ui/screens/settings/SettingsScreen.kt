@@ -78,7 +78,7 @@ fun SettingsScreen(
             }
             SettingsDivider()
             SettingsItem(
-                modifier = Modifier.padding(vertical = dimensionResource(id = R.dimen.regular_padding)),
+                modifier = Modifier.padding(vertical = dimensionResource(id = R.dimen.screen_padding)),
                 title = stringResource(id = R.string.colors_theme_text)
             ) {
                 SettingsThemeColorsList(
