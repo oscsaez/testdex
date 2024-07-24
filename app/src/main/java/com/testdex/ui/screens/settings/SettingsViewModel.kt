@@ -14,7 +14,8 @@ import javax.inject.Inject
 
 data class SettingsUiState(
     val isDarkTheme: Boolean = false,
-    val themeColor: ThemeColor = ThemeColor.Red
+    val themeColor: ThemeColor = ThemeColor.RedTheme,
+    val colors: List<ThemeColor> = emptyList()
 )
 
 @HiltViewModel
@@ -28,6 +29,7 @@ class SettingsViewModel @Inject constructor(
     init {
         getIsDarkTheme()
         getThemeColor()
+        getColors()
     }
 
     private fun getIsDarkTheme() {
@@ -51,6 +53,19 @@ class SettingsViewModel @Inject constructor(
                     )
                 }
             }
+        }
+    }
+
+    // TODO Change this to a real implementation
+    private fun getColors() {
+        _uiState.update { currentState ->
+            currentState.copy(
+                colors = listOf(
+                    ThemeColor.RedTheme,
+                    ThemeColor.BlueTheme,
+                    ThemeColor.YellowTheme
+                )
+            )
         }
     }
 

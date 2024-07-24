@@ -22,14 +22,17 @@ class MainActivity : ComponentActivity() {
     lateinit var userPreferences: UserPreferences
 
     private var darkThemeState by mutableStateOf(false)
-    private var themeColorState by mutableStateOf(ThemeColor.Red)
+    private var themeColorState: ThemeColor by mutableStateOf(ThemeColor.BlueTheme)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         lifecycleScope.launch {
             userPreferences.themeDark.collect { isDarkTheme ->
                 darkThemeState = isDarkTheme
             }
+        }
+        lifecycleScope.launch {
             userPreferences.themeColor.collect { themeColor ->
                 themeColorState = themeColor
             }

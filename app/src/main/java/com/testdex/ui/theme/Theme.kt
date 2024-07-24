@@ -10,6 +10,7 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.Color.Companion.Gray
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
@@ -20,6 +21,7 @@ import com.testdex.ui.model.ThemeColor
 private val DarkRedColorScheme = darkColorScheme(
     primary = Red,
     onPrimary = Light,
+    secondary = Gray,
     background = Dark,
     onBackground = Light
 )
@@ -27,6 +29,7 @@ private val DarkRedColorScheme = darkColorScheme(
 private val DarkBlueColorScheme = darkColorScheme(
     primary = Blue,
     onPrimary = Light,
+    secondary = Gray,
     background = Dark,
     onBackground = Light
 )
@@ -34,6 +37,7 @@ private val DarkBlueColorScheme = darkColorScheme(
 private val DarkYellowColorScheme = darkColorScheme(
     primary = Yellow,
     onPrimary = Light,
+    secondary = Gray,
     background = Dark,
     onBackground = Light
 )
@@ -42,6 +46,7 @@ private val DarkYellowColorScheme = darkColorScheme(
 private val LightRedColorScheme = lightColorScheme(
     primary = Red,
     onPrimary = Light,
+    secondary = Gray,
     background = Light,
     onBackground = Dark
 )
@@ -49,6 +54,7 @@ private val LightRedColorScheme = lightColorScheme(
 private val LightBlueColorScheme = lightColorScheme(
     primary = Blue,
     onPrimary = Light,
+    secondary = Gray,
     background = Light,
     onBackground = Dark
 )
@@ -56,6 +62,7 @@ private val LightBlueColorScheme = lightColorScheme(
 private val LightYellowColorScheme = lightColorScheme(
     primary = Yellow,
     onPrimary = Light,
+    secondary = Gray,
     background = Light,
     onBackground = Dark
 )
@@ -63,7 +70,7 @@ private val LightYellowColorScheme = lightColorScheme(
 @Composable
 fun TestdexTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    theme: ThemeColor = ThemeColor.Red,
+    theme: ThemeColor = ThemeColor.RedTheme,
     dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
@@ -93,13 +100,13 @@ fun TestdexTheme(
 
 fun themeSelected(darkTheme: Boolean, theme: ThemeColor) = when(darkTheme) {
     true -> when(theme) {
-        ThemeColor.Red -> DarkRedColorScheme
-        ThemeColor.Blue -> DarkBlueColorScheme
-        ThemeColor.Yellow -> DarkYellowColorScheme
+        ThemeColor.RedTheme -> DarkRedColorScheme
+        ThemeColor.BlueTheme -> DarkBlueColorScheme
+        ThemeColor.YellowTheme -> DarkYellowColorScheme
     }
     false -> when(theme) {
-        ThemeColor.Red -> LightRedColorScheme
-        ThemeColor.Blue -> LightBlueColorScheme
-        ThemeColor.Yellow -> LightYellowColorScheme
+        ThemeColor.RedTheme -> LightRedColorScheme
+        ThemeColor.BlueTheme -> LightBlueColorScheme
+        ThemeColor.YellowTheme -> LightYellowColorScheme
     }
 }

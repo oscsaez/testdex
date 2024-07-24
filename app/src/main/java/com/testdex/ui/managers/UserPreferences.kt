@@ -21,8 +21,12 @@ class UserPreferences(context: Context) {
     }
 
     val themeColor: Flow<ThemeColor> = dataStore.data.map { preferences ->
-        val themeColorValue = preferences[THEME_COLOR_KEY] ?: ThemeColor.Red.name
-        ThemeColor.valueOf(themeColorValue)
+        when(preferences[THEME_COLOR_KEY]) {
+            ThemeColor.RedTheme.name -> ThemeColor.RedTheme
+            ThemeColor.BlueTheme.name -> ThemeColor.BlueTheme
+            ThemeColor.YellowTheme.name -> ThemeColor.YellowTheme
+            else -> ThemeColor.RedTheme
+        }
     }
 
     suspend fun setThemeBrightness(themeBrightness: Boolean) {

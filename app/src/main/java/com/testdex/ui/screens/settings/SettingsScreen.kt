@@ -1,6 +1,5 @@
 package com.testdex.ui.screens.settings
 
-import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -41,6 +40,9 @@ fun SettingsScreen(
                 .padding(dimensionResource(id = R.dimen.screen_padding))
         ) {
             SettingsItem(
+                modifier = Modifier
+                    .padding(vertical = dimensionResource(id = R.dimen.regular_padding))
+                    .padding(bottom = dimensionResource(id = R.dimen.regular_padding)),
                 title = if(state.isDarkTheme) stringResource(id = R.string.dark_theme_text)
                     else stringResource(id = R.string.light_theme_text)
             ) {
@@ -73,6 +75,18 @@ fun SettingsScreen(
                         uncheckedTrackColor = Light
                     )
                 )
+            }
+            SettingsDivider()
+            SettingsItem(
+                modifier = Modifier.padding(vertical = dimensionResource(id = R.dimen.regular_padding)),
+                title = stringResource(id = R.string.colors_theme_text)
+            ) {
+                SettingsThemeColorsList(
+                    colors = state.colors,
+                    selectedColor = state.themeColor
+                ) { color ->
+                    settingsViewModel.updateColorTheme(color)
+                }
             }
         }
     }
