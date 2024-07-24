@@ -16,6 +16,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import com.testdex.ui.navigation.TestdexScreen
+import com.testdex.ui.theme.Dark
+import com.testdex.ui.theme.Light
 import com.testdex.ui.utils.roundedTopBordersShape
 
 @Composable
@@ -46,8 +48,8 @@ fun TestdexBottomBar(
                 },
                 colors = NavigationBarItemDefaults.colors(
                     indicatorColor = MaterialTheme.colorScheme.primary,
-                    selectedIconColor = MaterialTheme.colorScheme.onBackground,
-                    unselectedIconColor = MaterialTheme.colorScheme.onPrimary
+                    selectedIconColor = Dark,
+                    unselectedIconColor = Light
                 )
             )
         }
