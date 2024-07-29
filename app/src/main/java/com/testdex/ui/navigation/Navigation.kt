@@ -2,10 +2,10 @@ package com.testdex.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.testdex.ui.screens.pokedex.PokedexScreen
 import com.testdex.ui.screens.settings.SettingsScreen
 
 @Composable
@@ -19,7 +19,7 @@ fun Navigation(
         startDestination = TestdexScreen.TestdexPokedexScreen.route
     ) {
         composable(TestdexScreen.TestdexPokedexScreen.route) {
-            /*TODO*/
+            PokedexScreen()
         }
         composable(TestdexScreen.TestdexTableTypesScreen.route) {
             /*TODO*/

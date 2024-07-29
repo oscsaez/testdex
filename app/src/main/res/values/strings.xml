@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Testdex</string>
 
+    <!-- General -->
+    <string name="search_top_bar_text">Search by name</string>
+
     <!-- Home -->
     <string name="pokedex_screen_title">Pokedex</string>
     <string name="types_table_screen_title">Types table</string>
