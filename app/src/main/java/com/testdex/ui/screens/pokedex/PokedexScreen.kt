@@ -1,7 +1,7 @@
 package com.testdex.ui.screens.pokedex
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -12,13 +12,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import com.testdex.R
+import com.testdex.ui.composables.TestdexDivider
 import com.testdex.ui.composables.TestdexSearchTopBar
+import com.testdex.ui.model.PokemonUIModel
+import com.testdex.ui.utils.mockedPokemonList
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PokedexScreen(
     modifier: Modifier = Modifier
 ) {
+    val pokemonList: List<PokemonUIModel> = mockedPokemonList()
+
     Scaffold(
         modifier = modifier,
         topBar = {
@@ -41,6 +46,28 @@ fun PokedexScreen(
             }
         }
     ) { innerPadding ->
-        Box(modifier = Modifier.padding(innerPadding))
+        LazyColumn(
+            modifier = Modifier
+                .padding(innerPadding)
+                .padding(dimensionResource(id = R.dimen.screen_padding))
+        ) {
+            items(pokemonList.size - 1) { index ->
+                PokedexItem(
+                    modifier = Modifier.padding(vertical = dimensionResource(id = R.dimen.regular_padding)),
+                    pokemon = pokemonList[index]
+                ) {
+                    // TODO
+                }
+                TestdexDivider()
+            }
+            item {
+                PokedexItem(
+                    modifier = Modifier.padding(top = dimensionResource(id = R.dimen.regular_padding)),
+                    pokemon = pokemonList.last()
+                ) {
+                    // TODO
+                }
+            }
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.testdex.ui.screens.settings
+package com.testdex.ui.composables
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Divider
@@ -9,7 +9,7 @@ import androidx.compose.ui.res.dimensionResource
 import com.testdex.R
 
 @Composable
-fun SettingsDivider(
+fun TestdexDivider(
     modifier: Modifier = Modifier
 ) {
     Divider(
