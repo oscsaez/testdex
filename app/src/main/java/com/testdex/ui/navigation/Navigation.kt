@@ -19,7 +19,9 @@ fun Navigation(
         startDestination = TestdexScreen.TestdexPokedexScreen.route
     ) {
         composable(TestdexScreen.TestdexPokedexScreen.route) {
-            PokedexScreen()
+            PokedexScreen {
+                // TODO Serialize pokemon object when navigating
+            }
         }
         composable(TestdexScreen.TestdexTableTypesScreen.route) {
             /*TODO*/

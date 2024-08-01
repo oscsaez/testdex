@@ -92,6 +92,9 @@ dependencies {
 
     // Datastore preferences
     implementation(Libs.datastorePreferences)
+
+    // Coil for async images
+    implementation(Libs.coil)
 }
 
 kapt {

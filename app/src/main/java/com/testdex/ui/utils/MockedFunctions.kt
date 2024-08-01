@@ -63,6 +63,7 @@ fun mockedPokemonList(): List<PokemonUIModel> = listOf(
             String.empty,
             String.empty,
             String.empty,
+            String.empty,
             String.empty
         )
     ),
@@ -113,6 +114,7 @@ fun mockedPokemonList(): List<PokemonUIModel> = listOf(
         ),
         moves = emptyList(),
         sprite = SpriteUIModel(
+            String.empty,
             String.empty,
             String.empty,
             String.empty,

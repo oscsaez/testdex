@@ -28,6 +28,9 @@ object Versions {
 
     // Datastore preferences
     const val datastorePreferences = "1.0.0"
+
+    // Coil
+    const val coil = "2.7.0"
 }
 
 object Libs {
@@ -61,6 +64,9 @@ object Libs {
 
     // Datastore preferences
     const val datastorePreferences = "androidx.datastore:datastore-preferences:${Versions.datastorePreferences}"
+
+    // Coil
+    const val coil = "io.coil-kt:coil-compose:${Versions.coil}"
 }
 
 object Config {

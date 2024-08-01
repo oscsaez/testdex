@@ -20,7 +20,8 @@ import com.testdex.ui.utils.mockedPokemonList
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PokedexScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onPokemonClick: (PokemonUIModel) -> Unit
 ) {
     val pokemonList: List<PokemonUIModel> = mockedPokemonList()
 
@@ -56,7 +57,7 @@ fun PokedexScreen(
                     modifier = Modifier.padding(vertical = dimensionResource(id = R.dimen.regular_padding)),
                     pokemon = pokemonList[index]
                 ) {
-                    // TODO
+                    onPokemonClick(pokemonList[index])
                 }
                 TestdexDivider()
             }
@@ -65,7 +66,7 @@ fun PokedexScreen(
                     modifier = Modifier.padding(top = dimensionResource(id = R.dimen.regular_padding)),
                     pokemon = pokemonList.last()
                 ) {
-                    // TODO
+                    onPokemonClick(pokemonList.last())
                 }
             }
         }

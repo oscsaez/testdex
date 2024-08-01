@@ -3,6 +3,7 @@
 
     <!-- General -->
     <string name="search_top_bar_text">Search by name</string>
+    <string name="two_points_format">%1$s:</string>
 
     <!-- Home -->
     <string name="pokedex_screen_title">Pokedex</string>
@@ -17,4 +18,18 @@
     <string name="blue_color_theme_text">Blue</string>
     <string name="yellow_color_theme_text">Yellow</string>
     <string name="colors_theme_text">Colors</string>
+
+    <!-- Pokemon info -->
+    <string name="pokedex_number_text">Pokedex number</string>
+    <string name="types_text">Types</string>
+    <string name="ability_text">Ability</string>
+    <string name="hidden_ability_text">Hidden ability</string>
+    <string name="height_text">Height</string>
+    <string name="weight_text">Weight</string>
+    <string name="sprites_text">Sprites</string>
+    <string name="shiny_text">Shiny</string>
+    <string name="male_text">Male</string>
+    <string name="female_text">Female</string>
+    <string name="moves_text">Moves</string>
+    <string name="stats_text">Stats</string>
 </resources>
