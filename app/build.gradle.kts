@@ -95,6 +95,9 @@ dependencies {
 
     // Coil for async images
     implementation(Libs.coil)
+
+    // ConstraintLayout
+    implementation(Libs.constraintLayout)
 }
 
 kapt {

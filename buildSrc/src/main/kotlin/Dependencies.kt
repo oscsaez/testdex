@@ -30,7 +30,10 @@ object Versions {
     const val datastorePreferences = "1.0.0"
 
     // Coil
-    const val coil = "2.7.0"
+    const val coil = "2.6.0"
+
+    // ConstraintLayout
+    const val constraintLayout = "1.0.1"
 }
 
 object Libs {
@@ -67,6 +70,9 @@ object Libs {
 
     // Coil
     const val coil = "io.coil-kt:coil-compose:${Versions.coil}"
+
+    // ConstraintLayout
+    const val constraintLayout = "androidx.constraintlayout:constraintlayout-compose:${Versions.constraintLayout}"
 }
 
 object Config {

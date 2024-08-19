@@ -7,6 +7,7 @@ import com.testdex.ui.model.PokemonUIModel
 import com.testdex.ui.model.SpriteUIModel
 import com.testdex.ui.model.StatUIModel
 import com.testdex.ui.model.TypeUIModel
+import com.testdex.ui.theme.Gray
 
 fun mockedPokemonList(): List<PokemonUIModel> = listOf(
     PokemonUIModel(
@@ -18,7 +19,7 @@ fun mockedPokemonList(): List<PokemonUIModel> = listOf(
             TypeUIModel(
                 name = "Fire",
                 color = Color.Red,
-                imageResId = R.drawable.ic_pokeball
+                imageResId = R.mipmap.ic_bug_type
             )
         ),
         stats = listOf(
@@ -76,7 +77,12 @@ fun mockedPokemonList(): List<PokemonUIModel> = listOf(
             TypeUIModel(
                 name = "Fire",
                 color = Color.Red,
-                imageResId = R.drawable.ic_pokeball
+                imageResId = R.mipmap.ic_bug_type
+            ),
+            TypeUIModel(
+                name = "Dark",
+                color = Gray,
+                imageResId = R.mipmap.ic_dark_type
             )
         ),
         stats = listOf(
