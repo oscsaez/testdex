@@ -1,5 +1,6 @@
 package com.testdex.ui.composables
 
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -15,7 +16,8 @@ import com.testdex.ui.utils.roundedBottomBordersShape
 @Composable
 fun TestdexTitleTopBar(
     modifier: Modifier = Modifier,
-    title: String
+    title: String,
+    actions: @Composable (RowScope.() -> Unit) = {}
 ) {
     TopAppBar(
         modifier = modifier.clip(roundedBottomBordersShape()),
@@ -28,6 +30,7 @@ fun TestdexTitleTopBar(
         },
         colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
             containerColor = MaterialTheme.colorScheme.primary
-        )
+        ),
+        actions = actions
     )
 }
