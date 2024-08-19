@@ -57,7 +57,7 @@ fun mockedPokemonList(): List<PokemonUIModel> = listOf(
         ),
         moves = emptyList(),
         sprite = SpriteUIModel(
-            String.empty,
+            officialArtworkURI = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
             String.empty,
             String.empty,
             String.empty,
