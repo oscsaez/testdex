@@ -34,6 +34,9 @@ object Versions {
 
     // ConstraintLayout
     const val constraintLayout = "1.0.1"
+
+    // Serializable
+    const val serializable = "2.0.0"
 }
 
 object Libs {
@@ -73,6 +76,9 @@ object Libs {
 
     // ConstraintLayout
     const val constraintLayout = "androidx.constraintlayout:constraintlayout-compose:${Versions.constraintLayout}"
+
+    // Serializable
+    const val serializable = "org.jetbrains.kotlin:kotlin-serialization:${Versions.serializable}"
 }
 
 object Config {

@@ -15,16 +15,14 @@ import com.testdex.R
 import com.testdex.ui.composables.TestdexDivider
 import com.testdex.ui.composables.TestdexSearchTopBar
 import com.testdex.ui.model.PokemonUIModel
-import com.testdex.ui.utils.mockedPokemonList
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PokedexScreen(
     modifier: Modifier = Modifier,
-    onPokemonClick: (PokemonUIModel) -> Unit
+    pokemonList: List<PokemonUIModel>,
+    onPokemonClick: (Int) -> Unit
 ) {
-    val pokemonList: List<PokemonUIModel> = mockedPokemonList()
-
     Scaffold(
         modifier = modifier,
         topBar = {
@@ -57,7 +55,7 @@ fun PokedexScreen(
                     modifier = Modifier.padding(vertical = dimensionResource(id = R.dimen.regular_padding)),
                     pokemon = pokemonList[index]
                 ) {
-                    onPokemonClick(pokemonList[index])
+                    onPokemonClick(pokemonList[index].pokedexOrder)
                 }
                 TestdexDivider()
             }
@@ -66,7 +64,7 @@ fun PokedexScreen(
                     modifier = Modifier.padding(top = dimensionResource(id = R.dimen.regular_padding)),
                     pokemon = pokemonList.last()
                 ) {
-                    onPokemonClick(pokemonList.last())
+                    onPokemonClick(pokemonList.last().pokedexOrder)
                 }
             }
         }

@@ -98,6 +98,9 @@ dependencies {
 
     // ConstraintLayout
     implementation(Libs.constraintLayout)
+
+    // Serializable
+    implementation(Libs.serializable)
 }
 
 kapt {

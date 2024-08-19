@@ -19,7 +19,7 @@ fun mockedPokemonList(): List<PokemonUIModel> = listOf(
             TypeUIModel(
                 name = "Fire",
                 color = Color.Red,
-                imageResId = R.mipmap.ic_bug_type
+                imageResId = R.mipmap.ic_fire_type
             )
         ),
         stats = listOf(
@@ -77,7 +77,7 @@ fun mockedPokemonList(): List<PokemonUIModel> = listOf(
             TypeUIModel(
                 name = "Fire",
                 color = Color.Red,
-                imageResId = R.mipmap.ic_bug_type
+                imageResId = R.mipmap.ic_fire_type
             ),
             TypeUIModel(
                 name = "Dark",

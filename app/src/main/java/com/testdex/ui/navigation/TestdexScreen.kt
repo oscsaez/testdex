@@ -34,7 +34,7 @@ sealed class TestdexScreen(
     )
 
     object TestdexPokemonScreen : TestdexScreen(
-        route = "pokemon/pokedexOrder"
+        route = "pokemon/{pokedexOrder}"
     ) {
         fun createRoute(pokedexOrder: Int) = "pokemon/$pokedexOrder"
     }
