@@ -6,9 +6,12 @@
 
     <dimen name="divider_thickness">1dp</dimen>
     <dimen name="color_circle_thickness">3dp</dimen>
+    <dimen name="stat_indicator_thickness">10dp</dimen>
 
     <dimen name="regular_padding">8dp</dimen>
     <dimen name="less_regular_padding">4dp</dimen>
 
     <dimen name="color_circle_size">50dp</dimen>
+
+    <dimen name="stat_indicator_length">220dp</dimen>
 </resources>

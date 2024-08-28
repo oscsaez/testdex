@@ -44,7 +44,7 @@ fun Navigation(
             PokemonScreen(
                 pokemon = pokemonList.first { it.pokedexOrder == pokedexOrder }
             ) {
-
+                // TODO
             }
         }
         composable(TestdexScreen.TestdexTableTypesScreen.route) {

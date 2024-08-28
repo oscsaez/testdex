@@ -3,11 +3,54 @@ package com.testdex.ui.utils
 import androidx.compose.ui.graphics.Color
 import com.testdex.R
 import com.testdex.ui.model.AbilityUIModel
+import com.testdex.ui.model.MoveUIModel
 import com.testdex.ui.model.PokemonUIModel
 import com.testdex.ui.model.SpriteUIModel
 import com.testdex.ui.model.StatUIModel
 import com.testdex.ui.model.TypeUIModel
 import com.testdex.ui.theme.Gray
+
+private val fireType = TypeUIModel(
+    name = "Fire",
+    color = Color.Red,
+    imageResId = R.mipmap.ic_fire_type
+)
+
+private val darkType = TypeUIModel(
+    name = "Dark",
+    color = Gray,
+    imageResId = R.mipmap.ic_dark_type
+)
+
+private val megaPunchMove = MoveUIModel(
+    name = "mega-punch",
+    power = 80,
+    accuracy = 85,
+    pp = 20,
+    description = "Inflicts regular damage with no additional effect.",
+    type = TypeUIModel(
+        name = "Normal",
+        imageResId = R.mipmap.ic_normal_type,
+        color = Gray
+    )
+)
+
+private val hpStat = StatUIModel(
+    name = "HP",
+    base = 39
+)
+
+private val defenseStat = StatUIModel(
+    name = "Defense",
+    base = 200
+)
+
+private val blazeAbility = AbilityUIModel(
+    name = "Blaze",
+    description = "Description",
+    isHidden = false
+)
+
 
 fun mockedPokemonList(): List<PokemonUIModel> = listOf(
     PokemonUIModel(
@@ -15,47 +58,24 @@ fun mockedPokemonList(): List<PokemonUIModel> = listOf(
         name = "Charmander",
         height = 6.0,
         weight = 85.0,
-        types = listOf(
-            TypeUIModel(
-                name = "Fire",
-                color = Color.Red,
-                imageResId = R.mipmap.ic_fire_type
-            )
-        ),
+        types = listOf(fireType),
         stats = listOf(
-            StatUIModel(
-                name = "HP",
-                base = 39
-            ),
-            StatUIModel(
-                name = "HP",
-                base = 39
-            ),
-            StatUIModel(
-                name = "HP",
-                base = 39
-            ),
-            StatUIModel(
-                name = "HP",
-                base = 39
-            ),
-            StatUIModel(
-                name = "HP",
-                base = 39
-            ),
-            StatUIModel(
-                name = "HP",
-                base = 39
-            )
+            hpStat,
+            hpStat,
+            hpStat,
+            hpStat,
+            hpStat,
+            defenseStat,
         ),
-        abilities = listOf(
-            AbilityUIModel(
-                name = "Blaze",
-                description = "Description",
-                isHidden = false
-            )
+        abilities = listOf(blazeAbility),
+        moves = listOf(
+            megaPunchMove,
+            megaPunchMove,
+            megaPunchMove,
+            megaPunchMove,
+            megaPunchMove,
+            megaPunchMove,
         ),
-        moves = emptyList(),
         sprite = SpriteUIModel(
             officialArtworkURI = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
             String.empty,
@@ -74,50 +94,18 @@ fun mockedPokemonList(): List<PokemonUIModel> = listOf(
         height = 6.0,
         weight = 85.0,
         types = listOf(
-            TypeUIModel(
-                name = "Fire",
-                color = Color.Red,
-                imageResId = R.mipmap.ic_fire_type
-            ),
-            TypeUIModel(
-                name = "Dark",
-                color = Gray,
-                imageResId = R.mipmap.ic_dark_type
-            )
+            fireType,
+            darkType
         ),
         stats = listOf(
-            StatUIModel(
-                name = "HP",
-                base = 39
-            ),
-            StatUIModel(
-                name = "HP",
-                base = 39
-            ),
-            StatUIModel(
-                name = "HP",
-                base = 39
-            ),
-            StatUIModel(
-                name = "HP",
-                base = 39
-            ),
-            StatUIModel(
-                name = "HP",
-                base = 39
-            ),
-            StatUIModel(
-                name = "HP",
-                base = 39
-            )
+            hpStat,
+            hpStat,
+            hpStat,
+            hpStat,
+            hpStat,
+            hpStat
         ),
-        abilities = listOf(
-            AbilityUIModel(
-                name = "Blaze",
-                description = "Description",
-                isHidden = false
-            )
-        ),
+        abilities = listOf(blazeAbility),
         moves = emptyList(),
         sprite = SpriteUIModel(
             String.empty,

@@ -1,5 +1,6 @@
 package com.testdex.ui.screens.pokedex.pokemon
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -56,14 +57,21 @@ fun PokemonScreen(
         }
     ) { innerPadding ->
         LazyColumn(
-            modifier = Modifier
-                .padding(innerPadding)
-                .padding(dimensionResource(id = R.dimen.screen_padding))
+            modifier = Modifier.padding(innerPadding)
         ) {
            item {
-               PokemonCard(
-                   pokemon = pokemon
-               )
+               Column(
+                   modifier = Modifier.padding(dimensionResource(id = R.dimen.screen_padding))
+               ) {
+                   PokemonCard(
+                       pokemon = pokemon
+                   )
+                   PokemonStatsCard(
+                       modifier = Modifier.padding(vertical = dimensionResource(id = R.dimen.screen_padding)),
+                       stats = pokemon.stats,
+                       typeColor = pokemon.types.first().color
+                   )
+               }
            }
         }
     }
