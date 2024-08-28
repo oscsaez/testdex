@@ -21,8 +21,9 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.constraintlayout.compose.ConstraintLayout
-import coil.compose.AsyncImage
+import coil.compose.SubcomposeAsyncImage
 import com.testdex.R
+import com.testdex.ui.composables.TestdexCircularProgressIndicator
 import com.testdex.ui.composables.TestdexDivider
 import com.testdex.ui.model.PokemonUIModel
 import com.testdex.ui.model.TypeUIModel
@@ -135,11 +136,12 @@ fun PokemonCard(
                 .padding(dimensionResource(id = R.dimen.screen_padding))
                 .padding(vertical = dimensionResource(id = R.dimen.regular_padding))
         ) {
-            AsyncImage(
+            SubcomposeAsyncImage(
                 modifier = Modifier.fillMaxWidth(),
                 model = pokemon.sprite.officialArtworkURI,
                 contentDescription = "${pokemon.name} official artwork",
-                alignment = Alignment.Center
+                alignment = Alignment.Center,
+                loading = { TestdexCircularProgressIndicator() }
             )
             TestdexDivider(
                 modifier = Modifier.padding(

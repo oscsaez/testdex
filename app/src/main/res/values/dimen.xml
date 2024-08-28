@@ -12,6 +12,9 @@
     <dimen name="less_regular_padding">4dp</dimen>
 
     <dimen name="color_circle_size">50dp</dimen>
+    <dimen name="circular_progress_indicator_size">50dp</dimen>
 
     <dimen name="stat_indicator_length">220dp</dimen>
+
+    <dimen name="circular_progress_indicator_width">6dp</dimen>
 </resources>
