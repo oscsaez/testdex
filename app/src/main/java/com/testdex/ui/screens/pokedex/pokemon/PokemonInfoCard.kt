@@ -24,18 +24,20 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import coil.compose.SubcomposeAsyncImage
 import com.testdex.R
 import com.testdex.ui.composables.TestdexCircularProgressIndicator
-import com.testdex.ui.composables.TestdexDivider
+import com.testdex.ui.composables.TestdexHorizontalDivider
 import com.testdex.ui.model.PokemonUIModel
 import com.testdex.ui.model.TypeUIModel
 import com.testdex.ui.theme.Gray
 
 @Composable
-fun PokemonCard(
+fun PokemonInfoCard(
     modifier: Modifier = Modifier,
     pokemon: PokemonUIModel
 ) {
     val context = LocalContext.current
-    
+
+    // TODO Maybe a brush (gradient) for pokemon with two types
+
     @Composable
     fun InfoRow(
         modifier: Modifier = Modifier,
@@ -143,7 +145,7 @@ fun PokemonCard(
                 alignment = Alignment.Center,
                 loading = { TestdexCircularProgressIndicator() }
             )
-            TestdexDivider(
+            TestdexHorizontalDivider(
                 modifier = Modifier.padding(
                     horizontal = dimensionResource(id = R.dimen.screen_padding),
                     vertical = dimensionResource(id = R.dimen.regular_padding)
@@ -153,7 +155,7 @@ fun PokemonCard(
                 titleResId = R.string.pokedex_number_text,
                 info = pokemon.pokedexOrder.toString()
             )
-            TestdexDivider(
+            TestdexHorizontalDivider(
                 modifier = Modifier.padding(
                     horizontal = dimensionResource(id = R.dimen.screen_padding),
                     vertical = dimensionResource(id = R.dimen.regular_padding)
@@ -163,7 +165,7 @@ fun PokemonCard(
                 titleResId = R.string.types_text,
                 typesList = pokemon.types
             )
-            TestdexDivider(
+            TestdexHorizontalDivider(
                 modifier = Modifier.padding(
                     horizontal = dimensionResource(id = R.dimen.screen_padding),
                     vertical = dimensionResource(id = R.dimen.regular_padding)
@@ -172,7 +174,7 @@ fun PokemonCard(
             pokemon.abilities.find { !it.isHidden }?.let {
                 InfoRow(titleResId = R.string.ability_text, info = it.name)
             }
-            TestdexDivider(
+            TestdexHorizontalDivider(
                 modifier = Modifier.padding(
                     horizontal = dimensionResource(id = R.dimen.screen_padding),
                     vertical = dimensionResource(id = R.dimen.regular_padding)
@@ -180,7 +182,7 @@ fun PokemonCard(
             )
             pokemon.abilities.find { it.isHidden }?.let {
                 InfoRow(titleResId = R.string.hidden_ability_text, info = it.name)
-                TestdexDivider(
+                TestdexHorizontalDivider(
                     modifier = Modifier.padding(
                         horizontal = dimensionResource(id = R.dimen.screen_padding),
                         vertical = dimensionResource(id = R.dimen.regular_padding)
@@ -191,7 +193,7 @@ fun PokemonCard(
                 titleResId = R.string.height_text,
                 info = pokemon.height.toString()
             )
-            TestdexDivider(
+            TestdexHorizontalDivider(
                 modifier = Modifier.padding(
                     horizontal = dimensionResource(id = R.dimen.screen_padding),
                     vertical = dimensionResource(id = R.dimen.regular_padding)

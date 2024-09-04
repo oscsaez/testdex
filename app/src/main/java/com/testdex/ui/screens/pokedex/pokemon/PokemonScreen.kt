@@ -19,6 +19,8 @@ import androidx.compose.ui.res.painterResource
 import com.testdex.R
 import com.testdex.ui.composables.TestdexTitleTopBar
 import com.testdex.ui.model.PokemonUIModel
+import com.testdex.ui.screens.pokedex.pokemon.moves.PokemonMovesList
+import com.testdex.ui.screens.pokedex.pokemon.stats.PokemonStatsList
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -63,13 +65,16 @@ fun PokemonScreen(
                Column(
                    modifier = Modifier.padding(dimensionResource(id = R.dimen.screen_padding))
                ) {
-                   PokemonCard(
+                   PokemonInfoCard(
                        pokemon = pokemon
                    )
-                   PokemonStatsCard(
+                   PokemonStatsList(
                        modifier = Modifier.padding(vertical = dimensionResource(id = R.dimen.screen_padding)),
                        stats = pokemon.stats,
                        typeColor = pokemon.types.first().color
+                   )
+                   PokemonMovesList(
+                       moves = pokemon.moves,
                    )
                }
            }

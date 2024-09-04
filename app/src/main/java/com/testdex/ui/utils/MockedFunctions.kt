@@ -23,11 +23,24 @@ private val darkType = TypeUIModel(
 )
 
 private val megaPunchMove = MoveUIModel(
-    name = "mega-punch",
+    name = "Mega-Punch",
     power = 80,
     accuracy = 85,
     pp = 20,
     description = "Inflicts regular damage with no additional effect.",
+    type = TypeUIModel(
+        name = "Normal",
+        imageResId = R.mipmap.ic_normal_type,
+        color = Gray
+    )
+)
+
+private val swordsDanceMove = MoveUIModel(
+    name = "Swords-Dance",
+    power = null,
+    accuracy = null,
+    pp = 20,
+    description = "Raises the user's Attack by two stages.",
     type = TypeUIModel(
         name = "Normal",
         imageResId = R.mipmap.ic_normal_type,
@@ -75,6 +88,7 @@ fun mockedPokemonList(): List<PokemonUIModel> = listOf(
             megaPunchMove,
             megaPunchMove,
             megaPunchMove,
+            swordsDanceMove
         ),
         sprite = SpriteUIModel(
             officialArtworkURI = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",

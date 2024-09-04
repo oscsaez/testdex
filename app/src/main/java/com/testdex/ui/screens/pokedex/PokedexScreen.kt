@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import com.testdex.R
-import com.testdex.ui.composables.TestdexDivider
+import com.testdex.ui.composables.TestdexHorizontalDivider
 import com.testdex.ui.composables.TestdexSearchTopBar
 import com.testdex.ui.model.PokemonUIModel
 
@@ -57,7 +57,7 @@ fun PokedexScreen(
                 ) {
                     onPokemonClick(pokemonList[index].pokedexOrder)
                 }
-                TestdexDivider()
+                TestdexHorizontalDivider()
             }
             item {
                 PokedexItem(

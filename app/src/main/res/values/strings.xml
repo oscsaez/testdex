@@ -31,5 +31,11 @@
     <string name="male_text">Male</string>
     <string name="female_text">Female</string>
     <string name="moves_text">Moves</string>
-    <string name="stats_text">Stats</string>
+    <string name="stats_text">Base stats</string>
+    <string name="move_name_text">Move name</string>
+    <string name="type_text">Type</string>
+    <string name="move_power_text">Power</string>
+    <string name="move_accuracy_text">Accuracy</string>
+    <string name="move_pp_text">PP</string>
+    <string name="no_number_text">--</string>
 </resources>
