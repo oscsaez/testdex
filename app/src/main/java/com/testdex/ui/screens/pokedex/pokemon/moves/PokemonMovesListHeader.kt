@@ -1,5 +1,6 @@
 package com.testdex.ui.screens.pokedex.pokemon.moves
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -30,7 +31,8 @@ fun PokemonMovesListHeader(
                 width = dimensionResource(id = R.dimen.divider_thickness),
                 color = Gray,
                 shape = RoundedCornerShape(dimensionResource(id = R.dimen.stat_indicator_corner_radius))
-            ),
+            )
+            .background(MaterialTheme.colorScheme.primaryContainer),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(

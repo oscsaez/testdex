@@ -8,6 +8,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -16,6 +17,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import com.testdex.R
 import com.testdex.ui.composables.TestdexTitleTopBar
 import com.testdex.ui.model.PokemonUIModel
@@ -66,14 +69,31 @@ fun PokemonScreen(
                    modifier = Modifier.padding(dimensionResource(id = R.dimen.screen_padding))
                ) {
                    PokemonInfoCard(
+                       modifier = Modifier.padding(bottom = dimensionResource(id = R.dimen.section_padding)),
                        pokemon = pokemon
                    )
+                   Text(
+                       text = stringResource(id = R.string.stats_text),
+                       style = MaterialTheme.typography.titleLarge,
+                       color = MaterialTheme.colorScheme.onBackground,
+                       fontWeight = FontWeight.Bold
+                   )
                    PokemonStatsList(
-                       modifier = Modifier.padding(vertical = dimensionResource(id = R.dimen.screen_padding)),
+                       modifier = Modifier
+                           .padding(top = dimensionResource(id = R.dimen.regular_padding))
+                           .padding(bottom = dimensionResource(id = R.dimen.section_padding)),
                        stats = pokemon.stats,
                        typeColor = pokemon.types.first().color
                    )
+                   Text(
+                       text = stringResource(id = R.string.moves_text),
+                       style = MaterialTheme.typography.titleLarge,
+                       color = MaterialTheme.colorScheme.onBackground,
+                       fontWeight = FontWeight.Bold
+                   )
                    PokemonMovesList(
+                       modifier = Modifier
+                           .padding(top = dimensionResource(id = R.dimen.regular_padding)),
                        moves = pokemon.moves,
                    )
                }
