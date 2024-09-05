@@ -13,3 +13,5 @@ fun NavHostController.navigateWithoutStack(route: String) {
         restoreState = true
     }
 }
+
+val String.Companion.empty: String get() = ""

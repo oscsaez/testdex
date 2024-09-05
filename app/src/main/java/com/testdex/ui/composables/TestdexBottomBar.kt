@@ -15,6 +15,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import com.testdex.R
 import com.testdex.ui.navigation.TestdexScreen
 import com.testdex.ui.theme.Dark
 import com.testdex.ui.theme.Light
@@ -42,8 +43,8 @@ fun TestdexBottomBar(
                 },
                 icon = {
                     Icon(
-                        painter = painterResource(id = screen.resIdIcon),
-                        contentDescription = "${stringResource(id = screen.resIdName)} icon"
+                        painter = painterResource(id = screen.resIdIcon ?: R.drawable.ic_pokeball),
+                        contentDescription = "${screen.resIdName?.let { stringResource(id = it) }} icon"
                     )
                 },
                 colors = NavigationBarItemDefaults.colors(

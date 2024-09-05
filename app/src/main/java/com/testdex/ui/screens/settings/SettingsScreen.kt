@@ -16,6 +16,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.testdex.R
+import com.testdex.ui.composables.TestdexHorizontalDivider
 import com.testdex.ui.composables.TestdexTitleTopBar
 import com.testdex.ui.theme.Dark
 import com.testdex.ui.theme.Light
@@ -76,7 +77,7 @@ fun SettingsScreen(
                     )
                 )
             }
-            SettingsDivider()
+            TestdexHorizontalDivider()
             SettingsItem(
                 modifier = Modifier.padding(vertical = dimensionResource(id = R.dimen.screen_padding)),
                 title = stringResource(id = R.string.colors_theme_text)

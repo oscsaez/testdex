@@ -92,6 +92,15 @@ dependencies {
 
     // Datastore preferences
     implementation(Libs.datastorePreferences)
+
+    // Coil for async images
+    implementation(Libs.coil)
+
+    // ConstraintLayout
+    implementation(Libs.constraintLayout)
+
+    // Serializable
+    implementation(Libs.serializable)
 }
 
 kapt {

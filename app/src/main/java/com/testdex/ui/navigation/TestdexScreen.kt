@@ -5,8 +5,8 @@ import androidx.annotation.StringRes
 import com.testdex.R
 
 sealed class TestdexScreen(
-    @StringRes val resIdName: Int,
-    @DrawableRes val resIdIcon: Int,
+    @StringRes val resIdName: Int? = null,
+    @DrawableRes val resIdIcon: Int? = null,
     val route: String
 ) {
     object TestdexPokedexScreen : TestdexScreen(
@@ -32,5 +32,11 @@ sealed class TestdexScreen(
         resIdIcon = R.drawable.ic_settings,
         route = "settings"
     )
+
+    object TestdexPokemonScreen : TestdexScreen(
+        route = "pokemon/{pokedexOrder}"
+    ) {
+        fun createRoute(pokedexOrder: Int) = "pokemon/$pokedexOrder"
+    }
 }
 

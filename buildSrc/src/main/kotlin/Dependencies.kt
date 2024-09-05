@@ -28,6 +28,15 @@ object Versions {
 
     // Datastore preferences
     const val datastorePreferences = "1.0.0"
+
+    // Coil
+    const val coil = "2.6.0"
+
+    // ConstraintLayout
+    const val constraintLayout = "1.0.1"
+
+    // Serializable
+    const val serializable = "2.0.0"
 }
 
 object Libs {
@@ -61,6 +70,15 @@ object Libs {
 
     // Datastore preferences
     const val datastorePreferences = "androidx.datastore:datastore-preferences:${Versions.datastorePreferences}"
+
+    // Coil
+    const val coil = "io.coil-kt:coil-compose:${Versions.coil}"
+
+    // ConstraintLayout
+    const val constraintLayout = "androidx.constraintlayout:constraintlayout-compose:${Versions.constraintLayout}"
+
+    // Serializable
+    const val serializable = "org.jetbrains.kotlin:kotlin-serialization:${Versions.serializable}"
 }
 
 object Config {

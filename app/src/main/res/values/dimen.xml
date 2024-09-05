@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="zero">0dp</dimen>
     <dimen name="rounded_border">28dp</dimen>
-    <dimen name="screen_padding">16dp</dimen>
 
     <dimen name="divider_thickness">1dp</dimen>
     <dimen name="color_circle_thickness">3dp</dimen>
+    <dimen name="stat_indicator_thickness">10dp</dimen>
 
+    <dimen name="screen_padding">16dp</dimen>
+    <dimen name="section_padding">24dp</dimen>
     <dimen name="regular_padding">8dp</dimen>
     <dimen name="less_regular_padding">4dp</dimen>
 
     <dimen name="color_circle_size">50dp</dimen>
+    <dimen name="circular_progress_indicator_size">50dp</dimen>
+
+    <dimen name="stat_indicator_length">220dp</dimen>
+
+    <dimen name="stat_header_height">40dp</dimen>
+
+    <dimen name="circular_progress_indicator_width">6dp</dimen>
+
+    <dimen name="stat_indicator_corner_radius">3dp</dimen>
 </resources>
