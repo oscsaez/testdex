@@ -7,6 +7,6 @@ class RetrievePokemonListUseCase(
     private val pokemonRepository: PokemonRepository
 ) {
     operator fun invoke(limit: Int): List<Pokemon> {
-        return pokemonRepository.retrievePokemonList()
+        return pokemonRepository.retrievePokemonList(limit)
     }
 }

@@ -9,7 +9,7 @@ class PokemonRepositoryImpl(
     // TODO private val cloudPokemonDataSource: CloudPokemonDataSource
 ) : PokemonRepository {
 
-    override fun retrievePokemonList(): List<Pokemon> {
+    override fun retrievePokemonList(limit: Int): List<Pokemon> {
         return mockedPokemonList().toPokemon()
     }
 }

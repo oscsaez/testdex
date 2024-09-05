@@ -4,5 +4,5 @@ import com.testdex.domain.model.Pokemon
 
 interface PokemonRepository {
 
-    fun retrievePokemonList(): List<Pokemon>
+    fun retrievePokemonList(limit: Int): List<Pokemon>
 }
