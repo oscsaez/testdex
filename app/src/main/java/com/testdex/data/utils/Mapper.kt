@@ -60,3 +60,5 @@ fun PokemonData.toPokemon() = Pokemon(
     moves = moves.toMoves(),
     sprite = sprite.toSprite()
 )
+
+fun List<PokemonData>.toPokemon() = map { it.toPokemon() }
