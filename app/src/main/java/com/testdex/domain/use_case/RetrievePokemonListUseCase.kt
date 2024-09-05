@@ -6,7 +6,7 @@ import com.testdex.domain.repository.PokemonRepository
 class RetrievePokemonListUseCase(
     private val pokemonRepository: PokemonRepository
 ) {
-    operator fun invoke(limit: Int): List<Pokemon> {
+    suspend operator fun invoke(limit: Int): List<Pokemon> {
         return pokemonRepository.retrievePokemonList(limit)
     }
 }

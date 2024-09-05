@@ -79,7 +79,7 @@ dependencies {
     kapt(Libs.hiltCompiler)
 
     // Arrow for Either use
-    runtimeOnly(Libs.arrow)
+    implementation(Libs.arrow)
 
     // Retrofit
     implementation(Libs.retrofit)
