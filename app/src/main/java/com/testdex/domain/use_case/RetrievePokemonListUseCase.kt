@@ -1,12 +1,14 @@
 package com.testdex.domain.use_case
 
+import arrow.core.Either
+import com.testdex.domain.model.ErrorType
 import com.testdex.domain.model.Pokemon
 import com.testdex.domain.repository.PokemonRepository
 
 class RetrievePokemonListUseCase(
     private val pokemonRepository: PokemonRepository
 ) {
-    operator fun invoke(limit: Int): List<Pokemon> {
-        return pokemonRepository.retrievePokemonList()
+    suspend operator fun invoke(minimum: Int): Either<ErrorType, List<Pokemon>> {
+        return pokemonRepository.retrievePokemonList(minimum)
     }
 }

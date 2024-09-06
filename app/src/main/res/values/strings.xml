@@ -38,4 +38,24 @@
     <string name="move_accuracy_text">Acc.</string>
     <string name="move_pp_text">PP</string>
     <string name="no_number_text">--</string>
+
+    <!-- Pokemon types -->
+    <string name="bug_type_text">Bug</string>
+    <string name="dark_type_text">Dark</string>
+    <string name="dragon_type_text">Dragon</string>
+    <string name="electric_type_text">Electric</string>
+    <string name="fairy_type_text">Fairy</string>
+    <string name="fighting_type_text">Fighting</string>
+    <string name="fire_type_text">Fire</string>
+    <string name="flying_type_text">Flying</string>
+    <string name="ghost_type_text">Ghost</string>
+    <string name="grass_type_text">Grass</string>
+    <string name="ground_type_text">Ground</string>
+    <string name="ice_type_text">Ice</string>
+    <string name="normal_type_text">Normal</string>
+    <string name="poison_type_text">Poison</string>
+    <string name="psychic_type_text">Psychic</string>
+    <string name="rock_type_text">Rock</string>
+    <string name="steel_type_text">Steel</string>
+    <string name="water_type_text">Water</string>
 </resources>

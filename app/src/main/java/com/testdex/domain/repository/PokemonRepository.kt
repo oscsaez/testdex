@@ -1,8 +1,10 @@
 package com.testdex.domain.repository
 
+import arrow.core.Either
+import com.testdex.domain.model.ErrorType
 import com.testdex.domain.model.Pokemon
 
 interface PokemonRepository {
 
-    fun retrievePokemonList(): List<Pokemon>
+    suspend fun retrievePokemonList(minimum: Int): Either<ErrorType, List<Pokemon>>
 }
