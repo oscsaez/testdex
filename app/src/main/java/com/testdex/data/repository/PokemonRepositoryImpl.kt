@@ -12,7 +12,8 @@ class PokemonRepositoryImpl(
     // TODO private val cloudPokemonDataSource: CloudPokemonDataSource
 ) : PokemonRepository {
 
-    override suspend fun retrievePokemonList(limit: Int): Either<ErrorType, List<Pokemon>> {
+    // When developing remote module have a constant number for doing a loop over 30 pokemon
+    override suspend fun retrievePokemonList(minimum: Int): Either<ErrorType, List<Pokemon>> {
         return either {
             mockedPokemonList().toPokemon()
         }

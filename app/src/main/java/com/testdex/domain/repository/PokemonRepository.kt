@@ -6,5 +6,5 @@ import com.testdex.domain.model.Pokemon
 
 interface PokemonRepository {
 
-    suspend fun retrievePokemonList(limit: Int): Either<ErrorType, List<Pokemon>>
+    suspend fun retrievePokemonList(minimum: Int): Either<ErrorType, List<Pokemon>>
 }

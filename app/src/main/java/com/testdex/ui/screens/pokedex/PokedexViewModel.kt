@@ -3,6 +3,9 @@ package com.testdex.ui.screens.pokedex
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.testdex.domain.use_case.RetrievePokemonListUseCase
+import com.testdex.ui.utils.MAX_POKEMON_NUMBER_ON_A_PAGE
+import com.testdex.ui.utils.MIN_POKEMON_NUMBER_ON_A_PAGE
+import com.testdex.ui.utils.toPokemonUIModelList
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -19,7 +22,7 @@ class PokedexViewModel @Inject constructor(
     private val _state = MutableStateFlow(PokedexState())
     val state: StateFlow<PokedexState> = _state.asStateFlow()
 
-    private val _limit = 30
+    private var _minimumPokemon = MIN_POKEMON_NUMBER_ON_A_PAGE
 
     fun onEvent(event: PokedexEvent) = when(event) {
         is PokedexEvent.RetrievePokemonList -> retrievePokemonList()
@@ -30,18 +33,31 @@ class PokedexViewModel @Inject constructor(
         viewModelScope.launch {
             _state.update { currentState ->
                 currentState.copy(
-                    loading = false
+                    loading = _minimumPokemon == MIN_POKEMON_NUMBER_ON_A_PAGE,
+                    loadingMore = _minimumPokemon > MIN_POKEMON_NUMBER_ON_A_PAGE
                 )
             }
 
-            retrievePokemonListUseCase(_limit).fold(
+            retrievePokemonListUseCase(_minimumPokemon).fold(
                 ifLeft = {
                     // TODO Error case
                 },
-                ifRight = {
-                    // TODO Right case
+                ifRight = { newPokemonList ->
+                    _state.update { currentState ->
+                        currentState.copy(
+                            pokemonList = state.value.pokemonList + newPokemonList.toPokemonUIModelList()
+                        )
+                    }
+                    _minimumPokemon += MAX_POKEMON_NUMBER_ON_A_PAGE
                 }
             )
+
+            _state.update { currentState ->
+                currentState.copy(
+                    loading = false,
+                    loadingMore = false
+                )
+            }
         }
     }
 }

@@ -8,7 +8,7 @@ import com.testdex.domain.repository.PokemonRepository
 class RetrievePokemonListUseCase(
     private val pokemonRepository: PokemonRepository
 ) {
-    suspend operator fun invoke(limit: Int): Either<ErrorType, List<Pokemon>> {
-        return pokemonRepository.retrievePokemonList(limit)
+    suspend operator fun invoke(minimum: Int): Either<ErrorType, List<Pokemon>> {
+        return pokemonRepository.retrievePokemonList(minimum)
     }
 }
