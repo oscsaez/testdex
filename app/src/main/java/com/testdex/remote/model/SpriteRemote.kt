@@ -1,24 +1,26 @@
 package com.testdex.remote.model
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class SpriteRemote(
-    @SerializedName("official-artwork") // Be careful with this
+    @SerialName("official-artwork") // Be careful with this
     val officialArtworkURI: String,
-    @SerializedName("back_default")
+    @SerialName("back_default")
     val backMaleURI: String,
-    @SerializedName("back_female")
+    @SerialName("back_female")
     val backFemaleURI: String,
-    @SerializedName("back_shiny")
+    @SerialName("back_shiny")
     val backShinyMaleURI: String,
-    @SerializedName("back_shiny_female")
+    @SerialName("back_shiny_female")
     val backShinyFemaleURI: String,
-    @SerializedName("front_default")
+    @SerialName("front_default")
     val frontMaleURI: String,
-    @SerializedName("front_female")
+    @SerialName("front_female")
     val frontFemaleURI: String,
-    @SerializedName("front_shiny")
+    @SerialName("front_shiny")
     val frontShinyMaleURI: String,
-    @SerializedName("front_shiny_female")
+    @SerialName("front_shiny_female")
     val frontShinyFemaleURI: String
 )

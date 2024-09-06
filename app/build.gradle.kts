@@ -4,6 +4,7 @@ plugins {
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
     id("androidx.room") version Versions.room apply false
+    id("kotlinx-serialization")
 }
 
 android {
@@ -81,11 +82,6 @@ dependencies {
     // Arrow for Either use
     implementation(Libs.arrow)
 
-    // Retrofit
-    implementation(Libs.retrofit)
-    implementation(Libs.retrofitCoverter)
-    implementation(Libs.okhttp3)
-
     // Room
     implementation(Libs.roomRuntime)
     annotationProcessor(Libs.roomCompiler)
@@ -102,6 +98,9 @@ dependencies {
 
     // Serializable
     implementation(Libs.serializable)
+
+    // Ktor
+    implementation(Libs.ktor)
 }
 
 kapt {

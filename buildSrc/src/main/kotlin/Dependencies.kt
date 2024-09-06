@@ -20,10 +20,6 @@ object Versions {
     // Arrow
     const val arrow = "1.2.4"
 
-    // Retrofit
-    const val retrofit = "2.9.0"
-    const val okhttp3 = "4.9.3"
-
     // Room
     const val room = "2.6.1"
 
@@ -37,7 +33,10 @@ object Versions {
     const val constraintLayout = "1.0.1"
 
     // Serializable
-    const val serializable = "2.0.0"
+    const val serializable = "1.6.0"
+
+    // Ktor
+    const val ktor = "1.5.0"
 }
 
 object Libs {
@@ -60,11 +59,6 @@ object Libs {
     // Arrow
     const val arrow = "io.arrow-kt:arrow-core:${Versions.arrow}"
 
-    // Retrofit
-    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
-    const val retrofitCoverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
-    const val okhttp3 = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp3}"
-
     // Room
     const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
     const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
@@ -80,7 +74,11 @@ object Libs {
     const val constraintLayout = "androidx.constraintlayout:constraintlayout-compose:${Versions.constraintLayout}"
 
     // Serializable
-    const val serializable = "org.jetbrains.kotlin:kotlin-serialization:${Versions.serializable}"
+    const val serializable = "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.serializable}"
+
+    // Ktor
+    const val ktor = "io.ktor:ktor-client-android:${Versions.ktor}"
+    const val ktorSerialization = "io.ktor:ktor-client-serialization:${Versions.ktor}"
 }
 
 object Config {

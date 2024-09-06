@@ -1,11 +1,12 @@
 package com.testdex.remote.model
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class AbilityRemote(
     val name: String,
-    @SerializedName("effect")
+    @SerialName("effect")
     val description: String,
-    @SerializedName("is_hidden")
     val isHidden: Boolean
 )

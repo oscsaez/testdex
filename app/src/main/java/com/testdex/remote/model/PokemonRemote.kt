@@ -1,9 +1,11 @@
 package com.testdex.remote.model
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class PokemonRemote(
-    @SerializedName("order")
+    @SerialName("order")
     val pokedexOrder: Int,
     val name: String,
     val height: Double,
@@ -12,6 +14,6 @@ data class PokemonRemote(
     val stats: List<StatRemote>,
     val abilities: List<AbilityRemote>,
     val moves: List<MoveRemote>,
-    @SerializedName("sprites")
+    @SerialName("sprites")
     val sprite: SpriteRemote
 )
