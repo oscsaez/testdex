@@ -1,6 +1,10 @@
 package com.testdex.data.datasource
 
+import arrow.core.Either
+import com.testdex.data.model.DataErrorType
+import com.testdex.data.model.PokemonData
+
 interface CloudPokemonDataSource {
 
-    // TODO Retrieve pokemon list function
+    fun retrievePokemonList(minimum: Int): Either<DataErrorType, List<PokemonData>>
 }

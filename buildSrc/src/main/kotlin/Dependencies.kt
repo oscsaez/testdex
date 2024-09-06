@@ -22,6 +22,7 @@ object Versions {
 
     // Retrofit
     const val retrofit = "2.9.0"
+    const val okhttp3 = "4.9.3"
 
     // Room
     const val room = "2.6.1"
@@ -61,7 +62,8 @@ object Libs {
 
     // Retrofit
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
-    const val retrofitCoverter = "com.squareup.retrofit2:converter-scalars:${Versions.retrofit}"
+    const val retrofitCoverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+    const val okhttp3 = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp3}"
 
     // Room
     const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"

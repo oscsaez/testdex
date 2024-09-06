@@ -84,6 +84,7 @@ dependencies {
     // Retrofit
     implementation(Libs.retrofit)
     implementation(Libs.retrofitCoverter)
+    implementation(Libs.okhttp3)
 
     // Room
     implementation(Libs.roomRuntime)
