@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.testdex.R
 import com.testdex.ui.model.PokemonUIModel
@@ -73,7 +74,7 @@ fun PokedexItem(
                 items(count = pokemon.types.size) { index ->
                     Image(
                         painter = painterResource(id = pokemon.types[index].imageResId),
-                        contentDescription = "${pokemon.types[index].name} type icon"
+                        contentDescription = "${stringResource(id = pokemon.types[index].nameResId)} type icon"
                     )
                 }
             }

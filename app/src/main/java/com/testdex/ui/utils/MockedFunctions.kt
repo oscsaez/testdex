@@ -1,6 +1,5 @@
 package com.testdex.ui.utils
 
-import androidx.compose.ui.graphics.Color
 import com.testdex.R
 import com.testdex.ui.model.AbilityUIModel
 import com.testdex.ui.model.MoveUIModel
@@ -8,17 +7,19 @@ import com.testdex.ui.model.PokemonUIModel
 import com.testdex.ui.model.SpriteUIModel
 import com.testdex.ui.model.StatUIModel
 import com.testdex.ui.model.TypeUIModel
-import com.testdex.ui.theme.Gray
+import com.testdex.ui.theme.DarkTypeColor
+import com.testdex.ui.theme.FireTypeColor
+import com.testdex.ui.theme.NormalTypeColor
 
 private val fireType = TypeUIModel(
-    name = "Fire",
-    color = Color.Red,
+    nameResId = R.string.fire_type_text,
+    color = FireTypeColor,
     imageResId = R.mipmap.ic_fire_type
 )
 
 private val darkType = TypeUIModel(
-    name = "Dark",
-    color = Gray,
+    nameResId = R.string.dark_type_text,
+    color = DarkTypeColor,
     imageResId = R.mipmap.ic_dark_type
 )
 
@@ -29,9 +30,9 @@ private val megaPunchMove = MoveUIModel(
     pp = 20,
     description = "Inflicts regular damage with no additional effect.",
     type = TypeUIModel(
-        name = "Normal",
+        nameResId = R.string.normal_type_text,
         imageResId = R.mipmap.ic_normal_type,
-        color = Gray
+        color = NormalTypeColor
     )
 )
 
@@ -42,9 +43,9 @@ private val swordsDanceMove = MoveUIModel(
     pp = 20,
     description = "Raises the user's Attack by two stages.",
     type = TypeUIModel(
-        name = "Normal",
+        nameResId = R.string.normal_type_text,
         imageResId = R.mipmap.ic_normal_type,
-        color = Gray
+        color = NormalTypeColor
     )
 )
 

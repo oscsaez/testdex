@@ -111,7 +111,7 @@ fun PokemonInfoCard(
                 items(count = typesList.size) { index ->
                     Image(
                         painter = painterResource(id = typesList[index].imageResId),
-                        contentDescription = "${typesList[index].name} type icon"
+                        contentDescription = "${stringResource(id = typesList[index].nameResId)} type icon"
                     )
                 }
             }

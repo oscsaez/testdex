@@ -36,7 +36,7 @@ fun PokemonMoveItem(
         )
         Image(
             painter = painterResource(id = move.type.imageResId),
-            contentDescription = "${move.type.name} type icon"
+            contentDescription = "${stringResource(id = move.type.nameResId)} type icon"
         )
         Text(
             modifier = Modifier
