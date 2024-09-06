@@ -1,11 +1,13 @@
 package com.testdex.data.utils
 
 import com.testdex.data.model.AbilityData
+import com.testdex.data.model.DataErrorType
 import com.testdex.data.model.MoveData
 import com.testdex.data.model.PokemonData
 import com.testdex.data.model.SpriteData
 import com.testdex.data.model.StatData
 import com.testdex.domain.model.Ability
+import com.testdex.domain.model.ErrorType
 import com.testdex.domain.model.Move
 import com.testdex.domain.model.Pokemon
 import com.testdex.domain.model.Sprite
@@ -62,3 +64,7 @@ fun PokemonData.toPokemon() = Pokemon(
 )
 
 fun List<PokemonData>.toPokemon() = map { it.toPokemon() }
+
+fun DataErrorType.toErrorType() = when(this) {
+    is DataErrorType.NetworkDataError -> ErrorType.NetworkError
+}
