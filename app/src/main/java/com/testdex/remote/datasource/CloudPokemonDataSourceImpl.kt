@@ -1,6 +1,5 @@
 package com.testdex.remote.datasource
 
-import android.util.Log
 import arrow.core.Either
 import arrow.core.left
 import arrow.core.right
@@ -59,16 +58,15 @@ class CloudPokemonDataSourceImpl(
                     }*/
 
                     pokemon.toPokemonData(
+                        pokedexOrder = pokedexOrder,
                         abilities = pokemon.abilities.toAbilitiesData(abilityEffects),
                         moves = emptyList() /*pokemon.moves.toMovesData(moveInfoList)*/
                     ).right()
                 }
                 in 400..499 -> {
-                    Log.i("AQUI", "NotFound")
                     RemoteErrorType.NotFoundError.toDataErrorType().left()
                 }
                 else -> {
-                    Log.i("AQUI", "Server")
                     RemoteErrorType.ServerError.toDataErrorType().left()
                 }
             }
@@ -116,7 +114,6 @@ class CloudPokemonDataSourceImpl(
                 }
             }
         } catch (e: Exception) {
-            Log.i("AQUI", e.message.toString(), e)
             RemoteErrorType.ExceptionError.left()
         }
     }*/

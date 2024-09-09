@@ -58,7 +58,11 @@ fun SpriteRemote.toSpriteData() = SpriteData(
     frontShinyFemaleURI = frontShinyFemaleURI
 )
 
-fun PokemonRemote.toPokemonData(abilities: List<AbilityData>, moves: List<MoveData>) = PokemonData(
+fun PokemonRemote.toPokemonData(
+    pokedexOrder: Int,
+    abilities: List<AbilityData>,
+    moves: List<MoveData>
+) = PokemonData(
     pokedexOrder = pokedexOrder,
     name = name.capitalize(Locale.ROOT),
     height = height,
