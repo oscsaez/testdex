@@ -89,7 +89,9 @@ fun PokedexScreen(
                 if(state.loadingMore) {
                     item {
                         Box(
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = dimensionResource(id = R.dimen.screen_padding)),
                             contentAlignment = Alignment.Center
                         ) {
                             TestdexCircularProgressIndicator()

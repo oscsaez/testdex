@@ -1,5 +1,6 @@
 package com.testdex.ui.screens.pokedex
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.testdex.domain.use_case.RetrievePokemonListUseCase
@@ -41,6 +42,7 @@ class PokedexViewModel @Inject constructor(
             retrievePokemonListUseCase(_minimumPokemon).fold(
                 ifLeft = {
                     // TODO Error case
+                         Log.i("AQUI", it.toString())
                 },
                 ifRight = { newPokemonList ->
                     _state.update { currentState ->
