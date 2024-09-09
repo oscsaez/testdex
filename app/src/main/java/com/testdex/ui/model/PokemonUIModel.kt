@@ -18,8 +18,5 @@ data class PokemonUIModel(
         require(stats.size == 6) {
             "Stats list should contain exactly 6 elements"
         }
-        require(abilities.size in 1..2) {
-            "Abilities list can contain only one or two elements"
-        }
     }
 }

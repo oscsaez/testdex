@@ -4,6 +4,7 @@ plugins {
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
     id("androidx.room") version Versions.room apply false
+    id("kotlinx-serialization")
 }
 
 android {
@@ -81,10 +82,6 @@ dependencies {
     // Arrow for Either use
     implementation(Libs.arrow)
 
-    // Retrofit
-    implementation(Libs.retrofit)
-    implementation(Libs.retrofitCoverter)
-
     // Room
     implementation(Libs.roomRuntime)
     annotationProcessor(Libs.roomCompiler)
@@ -100,7 +97,15 @@ dependencies {
     implementation(Libs.constraintLayout)
 
     // Serializable
-    implementation(Libs.serializable)
+    implementation(Libs.kotlinxSerialization)
+
+    // Ktor
+    implementation(Libs.ktorCore)
+    implementation(Libs.ktorAndroid)
+    implementation(Libs.ktorJson)
+    implementation(Libs.ktorSerialization)
+    implementation(Libs.ktorContentNegotiation)
+    implementation(Libs.ktorKotlinx)
 }
 
 kapt {

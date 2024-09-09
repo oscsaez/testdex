@@ -1,21 +1,21 @@
 package com.testdex.di
 
 import com.testdex.data.datasource.CloudPokemonDataSource
-import com.testdex.data.repository.PokemonRepositoryImpl
-import com.testdex.domain.repository.PokemonRepository
+import com.testdex.remote.datasource.CloudPokemonDataSourceImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import io.ktor.client.HttpClient
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object RepositoryModule {
+object DataSourceModule {
 
     @Provides
     @Singleton
-    fun providesPokemonRepository(
-        cloudPokemonDataSource: CloudPokemonDataSource
-    ): PokemonRepository = PokemonRepositoryImpl(cloudPokemonDataSource)
+    fun provideCloudPokemonDataSource(
+        client: HttpClient
+    ): CloudPokemonDataSource = CloudPokemonDataSourceImpl(client)
 }
