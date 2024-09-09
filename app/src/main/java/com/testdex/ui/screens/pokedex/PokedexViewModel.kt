@@ -1,6 +1,5 @@
 package com.testdex.ui.screens.pokedex
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.testdex.domain.use_case.RetrievePokemonListUseCase
@@ -51,7 +50,6 @@ class PokedexViewModel @Inject constructor(
                         )
                     }
                     _minimumPokemon += UIConstants.MAX_POKEMON_NUMBER_ON_A_PAGE
-                    Log.i("AQUI", state.value.pokemonList.map { it.pokedexOrder }.toString())
                 }
             )
         }
