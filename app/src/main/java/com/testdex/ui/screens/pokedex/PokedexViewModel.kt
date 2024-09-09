@@ -45,19 +45,14 @@ class PokedexViewModel @Inject constructor(
                 ifRight = { newPokemonList ->
                     _state.update { currentState ->
                         currentState.copy(
-                            pokemonList = state.value.pokemonList + newPokemonList.toPokemonUIModelList()
+                            pokemonList = state.value.pokemonList + newPokemonList.toPokemonUIModelList(),
+                            loading = false,
+                            loadingMore = false
                         )
                     }
                     _minimumPokemon += MAX_POKEMON_NUMBER_ON_A_PAGE
                 }
             )
-
-            _state.update { currentState ->
-                currentState.copy(
-                    loading = false,
-                    loadingMore = false
-                )
-            }
         }
     }
 }

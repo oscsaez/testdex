@@ -10,7 +10,7 @@ data class PokemonRemote(
     val name: String,
     val height: Double,
     val weight: Double,
-    val types: List<String>, // Be careful with this
+    val types: List<TypeRemote>,
     val stats: List<StatRemote>,
     val abilities: List<AbilityRemote>,
     val moves: List<MoveRemote>,

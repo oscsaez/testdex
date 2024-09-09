@@ -97,10 +97,15 @@ dependencies {
     implementation(Libs.constraintLayout)
 
     // Serializable
-    implementation(Libs.serializable)
+    implementation(Libs.kotlinxSerialization)
 
     // Ktor
-    implementation(Libs.ktor)
+    implementation(Libs.ktorCore)
+    implementation(Libs.ktorAndroid)
+    implementation(Libs.ktorJson)
+    implementation(Libs.ktorSerialization)
+    implementation(Libs.ktorContentNegotiation)
+    implementation(Libs.ktorKotlinx)
 }
 
 kapt {

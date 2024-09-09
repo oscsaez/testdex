@@ -5,8 +5,20 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class AbilityRemote(
-    val name: String,
-    @SerialName("effect")
-    val description: String,
+    @SerialName("ability")
+    val abilityInfo: AbilityUrlRemote,
+    @SerialName("is_hidden")
     val isHidden: Boolean
+)
+
+@Serializable
+data class AbilityUrlRemote(
+    val name: String,
+    val url: String
+)
+
+@Serializable
+data class AbilityEffectRemote(
+    @SerialName("effect_entries")
+    val effectEntries: List<EffectEntryRemote>
 )

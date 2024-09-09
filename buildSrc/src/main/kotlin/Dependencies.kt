@@ -33,10 +33,10 @@ object Versions {
     const val constraintLayout = "1.0.1"
 
     // Serializable
-    const val serializable = "1.6.0"
+    const val kotlinxSerialization = "1.5.1"
 
     // Ktor
-    const val ktor = "1.5.0"
+    const val ktor = "2.3.12"
 }
 
 object Libs {
@@ -73,12 +73,16 @@ object Libs {
     // ConstraintLayout
     const val constraintLayout = "androidx.constraintlayout:constraintlayout-compose:${Versions.constraintLayout}"
 
-    // Serializable
-    const val serializable = "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.serializable}"
+    // Serialization
+    const val kotlinxSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.kotlinxSerialization}"
 
     // Ktor
-    const val ktor = "io.ktor:ktor-client-android:${Versions.ktor}"
+    const val ktorCore = "io.ktor:ktor-client-core:${Versions.ktor}"
+    const val ktorAndroid = "io.ktor:ktor-client-android:${Versions.ktor}"
+    const val ktorJson = "io.ktor:ktor-client-json:${Versions.ktor}"
     const val ktorSerialization = "io.ktor:ktor-client-serialization:${Versions.ktor}"
+    const val ktorContentNegotiation = "io.ktor:ktor-client-content-negotiation:${Versions.ktor}"
+    const val ktorKotlinx = "io.ktor:ktor-serialization-kotlinx-json:${Versions.ktor}"
 }
 
 object Config {

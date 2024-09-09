@@ -6,5 +6,5 @@ import com.testdex.data.model.PokemonData
 
 interface CloudPokemonDataSource {
 
-    fun retrievePokemonList(minimum: Int): Either<DataErrorType, List<PokemonData>>
+    suspend fun retrievePokemonList(pokedexOrder: Int): Either<DataErrorType, PokemonData>
 }
