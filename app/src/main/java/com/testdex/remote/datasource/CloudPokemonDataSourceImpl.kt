@@ -12,38 +12,57 @@ import com.testdex.remote.model.MoveInfoRemote
 import com.testdex.remote.model.PokemonRemote
 import com.testdex.remote.model.RemoteErrorType
 import com.testdex.remote.utils.Constants
+import com.testdex.remote.utils.toAbilitiesData
 import com.testdex.remote.utils.toDataErrorType
+import com.testdex.remote.utils.toMovesData
 import com.testdex.remote.utils.toPokemonData
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.statement.HttpResponse
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.coroutineScope
 
 class CloudPokemonDataSourceImpl(
     private val client: HttpClient
 ) : CloudPokemonDataSource {
 
-    override suspend fun retrievePokemonList(pokedexOrder: Int): Either<DataErrorType, PokemonData> {
-        return try {
+    override suspend fun retrievePokemonList(pokedexOrder: Int): Either<DataErrorType, PokemonData> = coroutineScope {
+        try {
             val response: HttpResponse = client.get("${Constants.POKEMON_URL}$pokedexOrder")
-            Log.i("AQUI", response.status.value.toString())
 
             when (response.status.value) {
                 in 200..299 -> {
                     val pokemon: PokemonRemote = response.body()
-                    val abilityEffectList: MutableList<AbilityEffectRemote> = mutableListOf()
-                    val moveInfoList: MutableList<MoveInfoRemote> = mutableListOf()
-                    val test: String = response.body()
-                    Log.i("AQUI", test)
 
+                    val abilityEffectDeferredList = pokemon.abilities.map { ability ->
+                        async {
+                            retrieveAbility(ability.abilityInfo.url)
+                        }
+                    }
+                    val moveInfoDeferredList = pokemon.moves.map { move ->
+                        async {
+                            retrieveMove(move.moveUrl.url)
+                        }
+                    }
 
-                    Log.i("AQUI", pokemon.toPokemonData(
-                        abilities = emptyList(),
-                        moves = emptyList()
-                    ).toString())
+                    val abilityEffects = abilityEffectDeferredList.awaitAll().mapNotNull { result ->
+                        result.fold(
+                            ifLeft = { null },
+                            ifRight = { it }
+                        )
+                    }
+                    val moveInfoList = moveInfoDeferredList.awaitAll().mapNotNull { result ->
+                        result.fold(
+                            ifLeft = { null },
+                            ifRight = { it }
+                        )
+                    }
+
                     pokemon.toPokemonData(
-                        abilities = emptyList(),
-                        moves = emptyList()
+                        abilities = pokemon.abilities.toAbilitiesData(abilityEffects),
+                        moves = pokemon.moves.toMovesData(moveInfoList)
                     ).right()
                 }
                 in 400..499 -> {
@@ -56,7 +75,6 @@ class CloudPokemonDataSourceImpl(
                 }
             }
         } catch (e: Exception) {
-            Log.i("AQUI", e.message.toString(), e)
             RemoteErrorType.ExceptionError.toDataErrorType().left()
         }
     }
@@ -68,7 +86,6 @@ class CloudPokemonDataSourceImpl(
             when (response.status.value) {
                 in 200..299 -> {
                     val abilityEffect: AbilityEffectRemote = response.body()
-                    Log.i("AQUI", abilityEffect.toString())
                     abilityEffect.right()
                 }
                 in 400..499 -> {
@@ -100,6 +117,7 @@ class CloudPokemonDataSourceImpl(
                 }
             }
         } catch (e: Exception) {
+            Log.i("AQUI", e.message.toString(), e)
             RemoteErrorType.ExceptionError.left()
         }
     }

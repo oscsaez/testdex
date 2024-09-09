@@ -22,5 +22,5 @@ data class MoveInfoRemote(
     val pp: Int,
     @SerialName("effect_entries")
     val effectEntries: List<EffectEntryRemote>,
-    val type: String // Be careful with this
+    val type: TypeInfoRemote
 )

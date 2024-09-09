@@ -37,8 +37,8 @@ fun MoveRemote.toMoveData(moveInfo: MoveInfoRemote) = MoveData(
     power = moveInfo.power,
     accuracy = moveInfo.accuracy,
     pp = moveInfo.pp,
-    description = moveInfo.effectEntries.first().effect,
-    type = moveInfo.type
+    description = moveInfo.effectEntries.firstOrNull()?.effect ?: "", // TODO Remove this empty string
+    type = moveInfo.type.name
 )
 
 fun List<MoveRemote>.toMovesData(moveInfoList: List<MoveInfoRemote>) = mapIndexed { index, moveRemote ->
