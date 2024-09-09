@@ -8,13 +8,11 @@ import com.testdex.data.datasource.CloudPokemonDataSource
 import com.testdex.data.model.DataErrorType
 import com.testdex.data.model.PokemonData
 import com.testdex.remote.model.AbilityEffectRemote
-import com.testdex.remote.model.MoveInfoRemote
 import com.testdex.remote.model.PokemonRemote
 import com.testdex.remote.model.RemoteErrorType
 import com.testdex.remote.utils.Constants
 import com.testdex.remote.utils.toAbilitiesData
 import com.testdex.remote.utils.toDataErrorType
-import com.testdex.remote.utils.toMovesData
 import com.testdex.remote.utils.toPokemonData
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -41,11 +39,11 @@ class CloudPokemonDataSourceImpl(
                             retrieveAbility(ability.abilityInfo.url)
                         }
                     }
-                    val moveInfoDeferredList = pokemon.moves.map { move ->
+                    /*val moveInfoDeferredList = pokemon.moves.map { move ->
                         async {
                             retrieveMove(move.moveUrl.url)
                         }
-                    }
+                    }*/
 
                     val abilityEffects = abilityEffectDeferredList.awaitAll().mapNotNull { result ->
                         result.fold(
@@ -53,16 +51,16 @@ class CloudPokemonDataSourceImpl(
                             ifRight = { it }
                         )
                     }
-                    val moveInfoList = moveInfoDeferredList.awaitAll().mapNotNull { result ->
+                    /*val moveInfoList = moveInfoDeferredList.awaitAll().mapNotNull { result ->
                         result.fold(
                             ifLeft = { null },
                             ifRight = { it }
                         )
-                    }
+                    }*/
 
                     pokemon.toPokemonData(
                         abilities = pokemon.abilities.toAbilitiesData(abilityEffects),
-                        moves = pokemon.moves.toMovesData(moveInfoList)
+                        moves = emptyList() /*pokemon.moves.toMovesData(moveInfoList)*/
                     ).right()
                 }
                 in 400..499 -> {
@@ -100,7 +98,8 @@ class CloudPokemonDataSourceImpl(
         }
     }
 
-    private suspend fun retrieveMove(url: String): Either<RemoteErrorType, MoveInfoRemote> {
+    // TODO This is commented at the moment because it takes a long time to obtain this information
+    /*private suspend fun retrieveMove(url: String): Either<RemoteErrorType, MoveInfoRemote> {
         return try {
             val response: HttpResponse = client.get(url)
 
@@ -120,5 +119,5 @@ class CloudPokemonDataSourceImpl(
             Log.i("AQUI", e.message.toString(), e)
             RemoteErrorType.ExceptionError.left()
         }
-    }
+    }*/
 }
