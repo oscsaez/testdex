@@ -1,5 +1,6 @@
 package com.testdex.remote.datasource
 
+import android.util.Log
 import arrow.core.Either
 import arrow.core.left
 import arrow.core.right
@@ -57,7 +58,10 @@ class CloudPokemonDataSourceImpl(
                         )
                     }*/
 
+                    Log.i("AQUI", pokemon.toString())
+
                     pokemon.toPokemonData(
+                        pokedexOrder = pokedexOrder,
                         abilities = pokemon.abilities.toAbilitiesData(abilityEffects),
                         moves = emptyList() /*pokemon.moves.toMovesData(moveInfoList)*/
                     ).right()
