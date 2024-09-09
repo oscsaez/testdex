@@ -14,6 +14,7 @@ import com.testdex.remote.model.PokemonRemote
 import com.testdex.remote.model.RemoteErrorType
 import com.testdex.remote.model.SpriteRemote
 import com.testdex.remote.model.StatRemote
+import java.util.Locale
 
 fun StatRemote.toStatData() = StatData(
     name = statInfo.name,
@@ -23,7 +24,7 @@ fun StatRemote.toStatData() = StatData(
 fun List<StatRemote>.toStatsData() = map { it.toStatData() }
 
 fun AbilityRemote.toAbilityData(abilityEffects: AbilityEffectRemote) = AbilityData(
-    name = abilityInfo.name,
+    name = abilityInfo.name.capitalize(Locale.ROOT),
     description = abilityEffects.effectEntries.first().effect,
     isHidden = isHidden
 )
@@ -59,7 +60,7 @@ fun SpriteRemote.toSpriteData() = SpriteData(
 
 fun PokemonRemote.toPokemonData(abilities: List<AbilityData>, moves: List<MoveData>) = PokemonData(
     pokedexOrder = pokedexOrder,
-    name = name,
+    name = name.capitalize(Locale.ROOT),
     height = height,
     weight = weight,
     types = types.map { it.typeInfo.name },
