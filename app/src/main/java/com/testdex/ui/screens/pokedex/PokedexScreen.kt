@@ -13,7 +13,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.snapshotFlow
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
@@ -22,6 +24,7 @@ import com.testdex.R
 import com.testdex.ui.composables.TestdexCircularProgressIndicator
 import com.testdex.ui.composables.TestdexHorizontalDivider
 import com.testdex.ui.composables.TestdexSearchTopBar
+import com.testdex.ui.utils.UIConstants
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -32,6 +35,13 @@ fun PokedexScreen(
     onPokemonClick: (Int) -> Unit
 ) {
     val listState = rememberLazyListState()
+    val reachedBottom: Boolean by remember {
+        derivedStateOf {
+            val lastVisibleItem = listState.layoutInfo.visibleItemsInfo.lastOrNull()
+            lastVisibleItem?.index != 0 && lastVisibleItem?.index ==
+                    listState.layoutInfo.totalItemsCount - UIConstants.NUMBER_OF_ITEMS_UNTIL_RELOAD
+        }
+    }
 
     Scaffold(
         modifier = modifier,
@@ -101,14 +111,9 @@ fun PokedexScreen(
             }
 
             // Load more pokemon when the end of the list has been reached
-            LaunchedEffect(key1 = listState) {
-                snapshotFlow {
-                    // Check that the content is bigger than the size available
-                    listState.layoutInfo.totalItemsCount > 0 && listState.layoutInfo.visibleItemsInfo.lastOrNull()?.index == state.pokemonList.size - 1
-                }.collect { canScrollToEnd ->
-                    if (canScrollToEnd && listState.layoutInfo.visibleItemsInfo.size < listState.layoutInfo.totalItemsCount) {
-                        onLoadMorePokemon()
-                    }
+            LaunchedEffect(key1 = reachedBottom) {
+                if(!state.loadingMore) {
+                    onLoadMorePokemon()
                 }
             }
         }

@@ -16,7 +16,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import com.testdex.R
 import com.testdex.ui.model.StatUIModel
 import com.testdex.ui.theme.Gray
-import com.testdex.ui.utils.MAX_TOTAL_STATS_NUMBER
+import com.testdex.ui.utils.UIConstants
 
 @Composable
 fun PokemonStatItem(
@@ -62,7 +62,7 @@ fun PokemonStatItem(
                     bottom.linkTo(parent.bottom)
                 }
                 .clip(RoundedCornerShape(dimensionResource(id = R.dimen.stat_indicator_corner_radius))),
-            progress = stat.base / MAX_TOTAL_STATS_NUMBER,
+            progress = stat.base / UIConstants.MAX_TOTAL_STATS_NUMBER,
             color = color,
             trackColor = MaterialTheme.colorScheme.primaryContainer
         )

@@ -4,8 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.testdex.domain.use_case.RetrievePokemonListUseCase
-import com.testdex.ui.utils.MAX_POKEMON_NUMBER_ON_A_PAGE
-import com.testdex.ui.utils.MIN_POKEMON_NUMBER_ON_A_PAGE
+import com.testdex.ui.utils.UIConstants
 import com.testdex.ui.utils.toPokemonUIModelList
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -23,7 +22,7 @@ class PokedexViewModel @Inject constructor(
     private val _state = MutableStateFlow(PokedexState())
     val state: StateFlow<PokedexState> = _state.asStateFlow()
 
-    private var _minimumPokemon = MIN_POKEMON_NUMBER_ON_A_PAGE
+    private var _minimumPokemon = UIConstants.MIN_POKEMON_NUMBER_ON_A_PAGE
 
     fun onEvent(event: PokedexEvent) = when(event) {
         is PokedexEvent.RetrievePokemonList -> retrievePokemonList()
@@ -34,15 +33,14 @@ class PokedexViewModel @Inject constructor(
         viewModelScope.launch {
             _state.update { currentState ->
                 currentState.copy(
-                    loading = _minimumPokemon == MIN_POKEMON_NUMBER_ON_A_PAGE,
-                    loadingMore = _minimumPokemon > MIN_POKEMON_NUMBER_ON_A_PAGE
+                    loading = _minimumPokemon == UIConstants.MIN_POKEMON_NUMBER_ON_A_PAGE,
+                    loadingMore = _minimumPokemon > UIConstants.MIN_POKEMON_NUMBER_ON_A_PAGE
                 )
             }
 
             retrievePokemonListUseCase(_minimumPokemon).fold(
                 ifLeft = {
                     // TODO Error case
-                         Log.i("AQUI", it.toString())
                 },
                 ifRight = { newPokemonList ->
                     _state.update { currentState ->
@@ -52,7 +50,8 @@ class PokedexViewModel @Inject constructor(
                             loadingMore = false
                         )
                     }
-                    _minimumPokemon += MAX_POKEMON_NUMBER_ON_A_PAGE
+                    _minimumPokemon += UIConstants.MAX_POKEMON_NUMBER_ON_A_PAGE
+                    Log.i("AQUI", state.value.pokemonList.map { it.pokedexOrder }.toString())
                 }
             )
         }
