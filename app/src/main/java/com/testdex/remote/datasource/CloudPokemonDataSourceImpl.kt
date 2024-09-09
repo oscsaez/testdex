@@ -64,14 +64,14 @@ class CloudPokemonDataSourceImpl(
                     ).right()
                 }
                 in 400..499 -> {
-                    RemoteErrorType.NotFoundError.toDataErrorType().left()
+                    RemoteErrorType.NotFoundRemoteError.toDataErrorType().left()
                 }
                 else -> {
-                    RemoteErrorType.ServerError.toDataErrorType().left()
+                    RemoteErrorType.ServerRemoteError.toDataErrorType().left()
                 }
             }
         } catch (e: Exception) {
-            RemoteErrorType.ExceptionError.toDataErrorType().left()
+            RemoteErrorType.ExceptionRemoteError.toDataErrorType().left()
         }
     }
 
@@ -85,14 +85,14 @@ class CloudPokemonDataSourceImpl(
                     abilityEffect.right()
                 }
                 in 400..499 -> {
-                    RemoteErrorType.NotFoundError.left()
+                    RemoteErrorType.NotFoundRemoteError.left()
                 }
                 else -> {
-                    RemoteErrorType.ServerError.left()
+                    RemoteErrorType.ServerRemoteError.left()
                 }
             }
         } catch (e: Exception) {
-            RemoteErrorType.ExceptionError.left()
+            RemoteErrorType.ExceptionRemoteError.left()
         }
     }
 

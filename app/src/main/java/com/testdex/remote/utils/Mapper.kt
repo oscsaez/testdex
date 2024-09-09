@@ -1,7 +1,6 @@
 package com.testdex.remote.utils
 
 import com.testdex.data.model.AbilityData
-import com.testdex.data.model.DataErrorType
 import com.testdex.data.model.MoveData
 import com.testdex.data.model.PokemonData
 import com.testdex.data.model.SpriteData
@@ -11,7 +10,6 @@ import com.testdex.remote.model.AbilityRemote
 import com.testdex.remote.model.MoveInfoRemote
 import com.testdex.remote.model.MoveRemote
 import com.testdex.remote.model.PokemonRemote
-import com.testdex.remote.model.RemoteErrorType
 import com.testdex.remote.model.SpriteRemote
 import com.testdex.remote.model.StatRemote
 import java.util.Locale
@@ -74,5 +72,3 @@ fun PokemonRemote.toPokemonData(
     sprite = sprite.toSpriteData()
 )
 
-// TODO Temporally
-fun RemoteErrorType.toDataErrorType() = DataErrorType.NetworkDataError

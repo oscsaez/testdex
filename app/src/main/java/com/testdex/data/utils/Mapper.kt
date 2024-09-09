@@ -66,5 +66,5 @@ fun PokemonData.toPokemon() = Pokemon(
 fun List<PokemonData>.toPokemon() = map { it.toPokemon() }
 
 fun DataErrorType.toErrorType() = when(this) {
-    is DataErrorType.NetworkDataError -> ErrorType.NetworkError
+    is DataErrorType.NotFoundDataError -> ErrorType.NotFoundError
 }
