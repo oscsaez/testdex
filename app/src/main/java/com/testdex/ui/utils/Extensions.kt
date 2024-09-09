@@ -1,5 +1,6 @@
 package com.testdex.ui.utils
 
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 
@@ -15,3 +16,8 @@ fun NavHostController.navigateWithoutStack(route: String) {
 }
 
 val String.Companion.empty: String get() = ""
+
+internal fun LazyListState.reachedBottom(buffer: Int = 1): Boolean {
+    val lastVisibleItem = layoutInfo.visibleItemsInfo.lastOrNull()
+    return lastVisibleItem?.index != 0 && lastVisibleItem?.index == this.layoutInfo.totalItemsCount - buffer
+}

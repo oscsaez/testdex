@@ -25,6 +25,7 @@ import com.testdex.ui.composables.TestdexCircularProgressIndicator
 import com.testdex.ui.composables.TestdexHorizontalDivider
 import com.testdex.ui.composables.TestdexSearchTopBar
 import com.testdex.ui.utils.UIConstants
+import com.testdex.ui.utils.reachedBottom
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -36,11 +37,7 @@ fun PokedexScreen(
 ) {
     val listState = rememberLazyListState()
     val reachedBottom: Boolean by remember {
-        derivedStateOf {
-            val lastVisibleItem = listState.layoutInfo.visibleItemsInfo.lastOrNull()
-            lastVisibleItem?.index != 0 && lastVisibleItem?.index ==
-                    listState.layoutInfo.totalItemsCount - UIConstants.NUMBER_OF_ITEMS_UNTIL_RELOAD
-        }
+        derivedStateOf { listState.reachedBottom(UIConstants.NUMBER_OF_ITEMS_UNTIL_RELOAD) }
     }
 
     Scaffold(
