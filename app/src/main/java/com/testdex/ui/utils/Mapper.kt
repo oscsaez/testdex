@@ -97,7 +97,7 @@ fun List<Stat>.toStatsUIModel() = map { it.toStatUIModel() }
 
 fun Pokemon.toPokemonUIModel() = PokemonUIModel(
     pokedexOrder = pokedexOrder,
-    name = name,
+    name = name.replaceGenderSymbols(),
     height = height,
     weight = weight,
     types = types.toTypesUIModel(),
