@@ -2,11 +2,13 @@ package com.testdex.ui.utils
 
 import com.testdex.R
 import com.testdex.domain.model.Ability
+import com.testdex.domain.model.ErrorType
 import com.testdex.domain.model.Move
 import com.testdex.domain.model.Pokemon
 import com.testdex.domain.model.Sprite
 import com.testdex.domain.model.Stat
 import com.testdex.ui.model.AbilityUIModel
+import com.testdex.ui.model.ErrorTypeUIModel
 import com.testdex.ui.model.MoveUIModel
 import com.testdex.ui.model.PokemonUIModel
 import com.testdex.ui.model.SpriteUIModel
@@ -108,3 +110,8 @@ fun Pokemon.toPokemonUIModel() = PokemonUIModel(
 )
 
 fun List<Pokemon>.toPokemonUIModelList() = map { it.toPokemonUIModel() }
+
+fun ErrorType.toErrorTypeUIModel() = when(this) {
+    is ErrorType.NotFoundError -> ErrorTypeUIModel.NotFoundErrorUIModel
+    is ErrorType.ServerError -> ErrorTypeUIModel.ServerErrorUIModel
+}

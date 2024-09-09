@@ -1,6 +1,7 @@
 package com.testdex.remote.utils
 
 import com.testdex.data.model.AbilityData
+import com.testdex.data.model.DataErrorType
 import com.testdex.data.model.MoveData
 import com.testdex.data.model.PokemonData
 import com.testdex.data.model.SpriteData
@@ -10,6 +11,7 @@ import com.testdex.remote.model.AbilityRemote
 import com.testdex.remote.model.MoveInfoRemote
 import com.testdex.remote.model.MoveRemote
 import com.testdex.remote.model.PokemonRemote
+import com.testdex.remote.model.RemoteErrorType
 import com.testdex.remote.model.SpriteRemote
 import com.testdex.remote.model.StatRemote
 import java.util.Locale
@@ -72,3 +74,8 @@ fun PokemonRemote.toPokemonData(
     sprite = sprite.toSpriteData()
 )
 
+fun RemoteErrorType.toDataErrorType(): DataErrorType = when(this) {
+    is RemoteErrorType.NotFoundRemoteError -> DataErrorType.NotFoundDataError
+    is RemoteErrorType.ServerRemoteError -> DataErrorType.ServerDataError
+    is RemoteErrorType.ExceptionRemoteError -> DataErrorType.NotFoundDataError
+}
