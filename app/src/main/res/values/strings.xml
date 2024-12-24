@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Testdex</string>
+    <string name="app_name">PokeTactics</string>
 
     <!-- General -->
     <string name="search_top_bar_text">Search by name</string>

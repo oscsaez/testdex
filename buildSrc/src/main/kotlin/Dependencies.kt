@@ -37,6 +37,9 @@ object Versions {
 
     // Ktor
     const val ktor = "2.3.12"
+
+    // SplashScreen
+    const val splashScreenCore = "1.0.1"
 }
 
 object Libs {
@@ -83,6 +86,9 @@ object Libs {
     const val ktorSerialization = "io.ktor:ktor-client-serialization:${Versions.ktor}"
     const val ktorContentNegotiation = "io.ktor:ktor-client-content-negotiation:${Versions.ktor}"
     const val ktorKotlinx = "io.ktor:ktor-serialization-kotlinx-json:${Versions.ktor}"
+
+    // SplashScreen
+    const val splashScreenCore = "androidx.core:core-splashscreen:${Versions.splashScreenCore}"
 }
 
 object Config {

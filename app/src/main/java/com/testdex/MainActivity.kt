@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import com.testdex.ui.TestdexScaffold
 import com.testdex.ui.managers.UserPreferences
@@ -27,6 +28,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        var splashScreen = installSplashScreen()
+
         lifecycleScope.launch {
             userPreferences.themeDark.collect { isDarkTheme ->
                 darkThemeState = isDarkTheme
@@ -45,6 +48,11 @@ class MainActivity : ComponentActivity() {
             ) {
                 TestdexScaffold()
             }
+        }
+
+        splashScreen.setKeepOnScreenCondition {
+            // TODO Get all pokemon and keep them in database
+            false
         }
     }
 }
