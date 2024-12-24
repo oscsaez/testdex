@@ -1,7 +1,7 @@
 package com.testdex.remote.model
 
 sealed class RemoteErrorType {
-    object NotFoundError: RemoteErrorType()
-    object ServerError: RemoteErrorType()
-    object ExceptionError: RemoteErrorType() // Only while developing
+    object NotFoundRemoteError: RemoteErrorType()
+    object ServerRemoteError: RemoteErrorType()
+    object ExceptionRemoteError: RemoteErrorType() // Only while developing
 }

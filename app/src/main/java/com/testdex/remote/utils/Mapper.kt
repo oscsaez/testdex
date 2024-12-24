@@ -74,5 +74,8 @@ fun PokemonRemote.toPokemonData(
     sprite = sprite.toSpriteData()
 )
 
-// TODO Temporally
-fun RemoteErrorType.toDataErrorType() = DataErrorType.NetworkDataError
+fun RemoteErrorType.toDataErrorType(): DataErrorType = when(this) {
+    is RemoteErrorType.NotFoundRemoteError -> DataErrorType.NotFoundDataError
+    is RemoteErrorType.ServerRemoteError -> DataErrorType.ServerDataError
+    is RemoteErrorType.ExceptionRemoteError -> DataErrorType.NotFoundDataError
+}
