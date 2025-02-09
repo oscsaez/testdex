@@ -106,9 +106,6 @@ dependencies {
     implementation(Libs.ktorSerialization)
     implementation(Libs.ktorContentNegotiation)
     implementation(Libs.ktorKotlinx)
-
-    // Splash screen
-    implementation(Libs.splashScreenCore)
 }
 
 kapt {
