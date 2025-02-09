@@ -37,9 +37,11 @@ fun SplashScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
+                modifier = Modifier
+                    .size(dimensionResource(id = R.dimen.app_logo_size))
+                    .clip(RoundedCornerShape(dimensionResource(id = R.dimen.rounded_border))),
                 painter = painterResource(id = R.drawable.poke_tactics_logo),
-                contentDescription = stringResource(id = R.string.app_logo_content_description),
-                modifier = Modifier.size(dimensionResource(id = R.dimen.app_logo_size)))
+                contentDescription = stringResource(id = R.string.app_logo_content_description))
             Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.screen_padding)))
             LinearProgressIndicator(
                 progress = progress,
