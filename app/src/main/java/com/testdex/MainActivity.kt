@@ -4,16 +4,17 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import com.testdex.ui.TestdexScaffold
 import com.testdex.ui.managers.UserPreferences
 import com.testdex.ui.model.ThemeColor
 import com.testdex.ui.screens.pokedex.PokedexEvent
 import com.testdex.ui.screens.pokedex.PokedexViewModel
+import com.testdex.ui.screens.splash_screen.SplashScreen
 import com.testdex.ui.theme.TestdexTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -31,7 +32,6 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val splashScreen = installSplashScreen()
         val pokedexViewModel: PokedexViewModel by viewModels()
 
         lifecycleScope.launch {
@@ -54,10 +54,14 @@ class MainActivity : ComponentActivity() {
                 darkTheme = darkThemeState,
                 theme = themeColorState
             ) {
-                TestdexScaffold()
+                val pokedexViewModelState by pokedexViewModel.state.collectAsState()
+
+                if (pokedexViewModelState.loading) {
+                    SplashScreen(progress = pokedexViewModelState.pokemonProgress)
+                } else {
+                    TestdexScaffold()
+                }
             }
         }
-
-        splashScreen.setKeepOnScreenCondition { pokedexViewModel.state.value.loading }
     }
 }

@@ -2,10 +2,4 @@
 <resources>
 
     <style name="Theme.Testdex" parent="android:Theme.Material.Light.NoActionBar" />
-
-    <style name="Theme.Testdex.SplashScreen" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/red</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/poke_tactics_logo</item>
-        <item name="postSplashScreenTheme">@style/Theme.Testdex</item>
-    </style>
 </resources>

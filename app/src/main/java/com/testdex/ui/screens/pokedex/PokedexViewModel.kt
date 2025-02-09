@@ -27,6 +27,16 @@ class PokedexViewModel @Inject constructor(
 
     private fun retrieveAllPokemonBasicsList() {
         viewModelScope.launch {
+            retrieveAllPokemonBasicsUseCase.pokemonProgress.collect { progress ->
+                _state.update { currentState ->
+                    currentState.copy(
+                        pokemonProgress = progress
+                    )
+                }
+            }
+        }
+
+        viewModelScope.launch {
             _state.update { currentState ->
                 currentState.copy(
                     loading = true
@@ -40,7 +50,9 @@ class PokedexViewModel @Inject constructor(
                 ifRight = { newPokemonList ->
                     _state.update { currentState ->
                         currentState.copy(
-                            pokemonList = newPokemonList.toPokemonBasicsUIModelList(),
+                            pokemonList = newPokemonList
+                                .toPokemonBasicsUIModelList()
+                                .sortedBy { it.pokedexOrder },
                             loading = false
                         )
                     }

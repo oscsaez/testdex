@@ -4,5 +4,6 @@ import com.testdex.ui.model.PokemonBasicsUIModel
 
 data class PokedexState(
     val loading: Boolean = false,
-    val pokemonList: List<PokemonBasicsUIModel> = emptyList()
+    val pokemonList: List<PokemonBasicsUIModel> = emptyList(),
+    val pokemonProgress: Float = 0f
 )

@@ -5,6 +5,9 @@
     <string name="search_top_bar_text">Search by name</string>
     <string name="two_points_format">%1$s:</string>
 
+    <!-- Splash Screen -->
+    <string name="app_logo_content_description">Logo</string>
+
     <!-- Home -->
     <string name="pokedex_screen_title">Pokedex</string>
     <string name="types_table_screen_title">Types table</string>
