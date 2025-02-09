@@ -18,12 +18,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.testdex.R
-import com.testdex.ui.model.PokemonUIModel
+import com.testdex.ui.model.PokemonBasicsUIModel
 
 @Composable
 fun PokedexItem(
     modifier: Modifier = Modifier,
-    pokemon: PokemonUIModel,
+    pokemonBasics: PokemonBasicsUIModel,
     onCardClick: () -> Unit
 ) {
     Card(
@@ -52,7 +52,7 @@ fun PokedexItem(
                     top.linkTo(parent.top)
                     bottom.linkTo(parent.bottom)
                 },
-                text = pokemon.pokedexOrder.toString(),
+                text = pokemonBasics.pokedexOrder.toString(),
                 style = MaterialTheme.typography.titleSmall,
                 color = MaterialTheme.colorScheme.onBackground
             )
@@ -62,7 +62,7 @@ fun PokedexItem(
                     top.linkTo(parent.top)
                     bottom.linkTo(parent.bottom)
                 },
-                text = pokemon.name,
+                text = pokemonBasics.name,
                 style = MaterialTheme.typography.titleSmall,
                 color = MaterialTheme.colorScheme.onBackground
             )
@@ -71,10 +71,10 @@ fun PokedexItem(
                     end.linkTo(parent.end)
                 }
             ) {
-                items(count = pokemon.types.size) { index ->
+                items(count = pokemonBasics.types.size) { index ->
                     Image(
-                        painter = painterResource(id = pokemon.types[index].imageResId),
-                        contentDescription = "${stringResource(id = pokemon.types[index].nameResId)} type icon"
+                        painter = painterResource(id = pokemonBasics.types[index].imageResId),
+                        contentDescription = "${stringResource(id = pokemonBasics.types[index].nameResId)} type icon"
                     )
                 }
             }

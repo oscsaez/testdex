@@ -3,6 +3,7 @@ package com.testdex.data.utils
 import com.testdex.data.model.AbilityData
 import com.testdex.data.model.DataErrorType
 import com.testdex.data.model.MoveData
+import com.testdex.data.model.PokemonBasicsData
 import com.testdex.data.model.PokemonData
 import com.testdex.data.model.SpriteData
 import com.testdex.data.model.StatData
@@ -10,6 +11,7 @@ import com.testdex.domain.model.Ability
 import com.testdex.domain.model.ErrorType
 import com.testdex.domain.model.Move
 import com.testdex.domain.model.Pokemon
+import com.testdex.domain.model.PokemonBasics
 import com.testdex.domain.model.Sprite
 import com.testdex.domain.model.Stat
 
@@ -51,7 +53,7 @@ fun SpriteData.toSprite() = Sprite(
     frontShinyFemaleURI = frontShinyFemaleURI
 )
 
-fun PokemonData.toPokemon() = Pokemon(
+fun PokemonData.toPokemonList() = Pokemon(
     pokedexOrder = pokedexOrder,
     name = name,
     height = height,
@@ -63,7 +65,15 @@ fun PokemonData.toPokemon() = Pokemon(
     sprite = sprite.toSprite()
 )
 
-fun List<PokemonData>.toPokemon() = map { it.toPokemon() }
+fun List<PokemonData>.toPokemonList() = map { it.toPokemonList() }
+
+fun PokemonBasicsData.toPokemonBasics() = PokemonBasics(
+    pokedexOrder = pokedexOrder,
+    name = name,
+    types = types
+)
+
+fun List<PokemonBasicsData>.toPokemonBasicsList() = map { it.toPokemonBasics() }
 
 fun DataErrorType.toErrorType() = when(this) {
     is DataErrorType.NotFoundDataError -> ErrorType.NotFoundError

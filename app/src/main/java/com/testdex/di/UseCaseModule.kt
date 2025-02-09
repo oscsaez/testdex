@@ -1,7 +1,7 @@
 package com.testdex.di
 
 import com.testdex.domain.repository.PokemonRepository
-import com.testdex.domain.use_case.RetrievePokemonListUseCase
+import com.testdex.domain.use_case.RetrieveAllPokemonBasicsUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,9 +14,9 @@ object UseCaseModule {
 
     @Provides
     @Singleton
-    fun providesRetrievePokemonListUseCase(
+    fun providesRetrieveAllPokemonBasicsListUseCase(
         pokemonRepository: PokemonRepository
-    ): RetrievePokemonListUseCase {
-        return RetrievePokemonListUseCase(pokemonRepository)
+    ): RetrieveAllPokemonBasicsUseCase {
+        return RetrieveAllPokemonBasicsUseCase(pokemonRepository)
     }
 }

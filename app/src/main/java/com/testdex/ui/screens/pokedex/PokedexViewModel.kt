@@ -2,9 +2,8 @@ package com.testdex.ui.screens.pokedex
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.testdex.domain.use_case.RetrievePokemonListUseCase
-import com.testdex.ui.utils.UIConstants
-import com.testdex.ui.utils.toPokemonUIModelList
+import com.testdex.domain.use_case.RetrieveAllPokemonBasicsUseCase
+import com.testdex.ui.utils.toPokemonBasicsUIModelList
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -15,41 +14,36 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PokedexViewModel @Inject constructor(
-    private val retrievePokemonListUseCase: RetrievePokemonListUseCase
+    private val retrieveAllPokemonBasicsUseCase: RetrieveAllPokemonBasicsUseCase
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(PokedexState())
     val state: StateFlow<PokedexState> = _state.asStateFlow()
 
-    private var _minimumPokemon = UIConstants.MIN_POKEMON_NUMBER_ON_A_PAGE
-
     fun onEvent(event: PokedexEvent) = when(event) {
-        is PokedexEvent.RetrievePokemonList -> retrievePokemonList()
+        is PokedexEvent.RetrieveAllPokemonBasicsList -> retrieveAllPokemonBasicsList()
         is PokedexEvent.SearchPokemonByName -> {}
     }
 
-    private fun retrievePokemonList() {
+    private fun retrieveAllPokemonBasicsList() {
         viewModelScope.launch {
             _state.update { currentState ->
                 currentState.copy(
-                    loading = _minimumPokemon == UIConstants.MIN_POKEMON_NUMBER_ON_A_PAGE,
-                    loadingMore = _minimumPokemon > UIConstants.MIN_POKEMON_NUMBER_ON_A_PAGE
+                    loading = true
                 )
             }
 
-            retrievePokemonListUseCase(_minimumPokemon).fold(
+            retrieveAllPokemonBasicsUseCase().fold(
                 ifLeft = {
                     // TODO Error case
                 },
                 ifRight = { newPokemonList ->
                     _state.update { currentState ->
                         currentState.copy(
-                            pokemonList = state.value.pokemonList + newPokemonList.toPokemonUIModelList(),
-                            loading = false,
-                            loadingMore = false
+                            pokemonList = newPokemonList.toPokemonBasicsUIModelList(),
+                            loading = false
                         )
                     }
-                    _minimumPokemon += UIConstants.MAX_POKEMON_NUMBER_ON_A_PAGE
                 }
             )
         }

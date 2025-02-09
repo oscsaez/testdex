@@ -3,6 +3,7 @@ package com.testdex.remote.utils
 import com.testdex.data.model.AbilityData
 import com.testdex.data.model.DataErrorType
 import com.testdex.data.model.MoveData
+import com.testdex.data.model.PokemonBasicsData
 import com.testdex.data.model.PokemonData
 import com.testdex.data.model.SpriteData
 import com.testdex.data.model.StatData
@@ -10,6 +11,7 @@ import com.testdex.remote.model.AbilityEffectRemote
 import com.testdex.remote.model.AbilityRemote
 import com.testdex.remote.model.MoveInfoRemote
 import com.testdex.remote.model.MoveRemote
+import com.testdex.remote.model.PokemonBasicsRemote
 import com.testdex.remote.model.PokemonRemote
 import com.testdex.remote.model.RemoteErrorType
 import com.testdex.remote.model.SpriteRemote
@@ -59,7 +61,6 @@ fun SpriteRemote.toSpriteData() = SpriteData(
 )
 
 fun PokemonRemote.toPokemonData(
-    pokedexOrder: Int,
     abilities: List<AbilityData>,
     moves: List<MoveData>
 ) = PokemonData(
@@ -72,6 +73,12 @@ fun PokemonRemote.toPokemonData(
     abilities = abilities,
     moves = moves,
     sprite = sprite.toSpriteData()
+)
+
+fun PokemonBasicsRemote.toPokemonBasicsData() = PokemonBasicsData(
+    pokedexOrder = pokedexOrder,
+    name = name.capitalize(Locale.ROOT),
+    types = types.map { it.typeInfo.name }
 )
 
 fun RemoteErrorType.toDataErrorType(): DataErrorType = when(this) {
