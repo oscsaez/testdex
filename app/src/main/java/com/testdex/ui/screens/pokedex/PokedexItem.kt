@@ -44,7 +44,7 @@ fun PokedexItem(
                 .padding(dimensionResource(id = R.dimen.screen_padding))
         ) {
             val (orderRef, nameRef, typesRef) = createRefs()
-            val leftGuideline = createGuidelineFromStart(0.12f)
+            val leftGuideline = createGuidelineFromStart(0.16f)
 
             Text(
                 modifier = Modifier.constrainAs(orderRef) {
