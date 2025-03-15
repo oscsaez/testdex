@@ -5,11 +5,13 @@ import com.testdex.domain.model.Ability
 import com.testdex.domain.model.ErrorType
 import com.testdex.domain.model.Move
 import com.testdex.domain.model.Pokemon
+import com.testdex.domain.model.PokemonBasics
 import com.testdex.domain.model.Sprite
 import com.testdex.domain.model.Stat
 import com.testdex.ui.model.AbilityUIModel
 import com.testdex.ui.model.ErrorTypeUIModel
 import com.testdex.ui.model.MoveUIModel
+import com.testdex.ui.model.PokemonBasicsUIModel
 import com.testdex.ui.model.PokemonUIModel
 import com.testdex.ui.model.SpriteUIModel
 import com.testdex.ui.model.StatUIModel
@@ -110,6 +112,14 @@ fun Pokemon.toPokemonUIModel() = PokemonUIModel(
 )
 
 fun List<Pokemon>.toPokemonUIModelList() = map { it.toPokemonUIModel() }
+
+fun PokemonBasics.toPokemonBasicsUIModel() = PokemonBasicsUIModel(
+    pokedexOrder = pokedexOrder,
+    name = name,
+    types = types.toTypesUIModel()
+)
+
+fun List<PokemonBasics>.toPokemonBasicsUIModelList() = map { it.toPokemonBasicsUIModel() }
 
 fun ErrorType.toErrorTypeUIModel() = when(this) {
     is ErrorType.NotFoundError -> ErrorTypeUIModel.NotFoundErrorUIModel

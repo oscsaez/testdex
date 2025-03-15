@@ -1,7 +1,6 @@
 package com.testdex.ui.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -11,7 +10,6 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.testdex.ui.screens.pokedex.PokedexEvent
 import com.testdex.ui.screens.pokedex.PokedexScreen
 import com.testdex.ui.screens.pokedex.PokedexViewModel
 import com.testdex.ui.screens.pokedex.pokemon.PokemonScreen
@@ -26,10 +24,6 @@ fun Navigation(
     val pokedexViewModel: PokedexViewModel = hiltViewModel()
     val pokedexState by pokedexViewModel.state.collectAsState()
 
-    LaunchedEffect(key1 = Unit) {
-        pokedexViewModel.onEvent(PokedexEvent.RetrievePokemonList)
-    }
-
     NavHost(
         modifier = modifier,
         navController = navController,
@@ -37,10 +31,7 @@ fun Navigation(
     ) {
         composable(TestdexScreen.TestdexPokedexScreen.route) {
             PokedexScreen(
-                state = pokedexState,
-                onLoadMorePokemon = {
-                    pokedexViewModel.onEvent(PokedexEvent.RetrievePokemonList)
-                }
+                state = pokedexState
             ) { pokemonOrder ->
                 navController.navigate(TestdexScreen.TestdexPokemonScreen.createRoute(pokemonOrder))
             }

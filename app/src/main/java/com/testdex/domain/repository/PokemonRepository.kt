@@ -2,9 +2,12 @@ package com.testdex.domain.repository
 
 import arrow.core.Either
 import com.testdex.domain.model.ErrorType
-import com.testdex.domain.model.Pokemon
+import com.testdex.domain.model.PokemonBasics
+import kotlinx.coroutines.flow.StateFlow
 
 interface PokemonRepository {
 
-    suspend fun retrievePokemonList(pokedexOrder: Int): Either<ErrorType, Pokemon>
+    val pokemonProgress: StateFlow<Float>
+
+    suspend fun retrieveAllPokemonBasics(): Either<ErrorType, List<PokemonBasics>>
 }

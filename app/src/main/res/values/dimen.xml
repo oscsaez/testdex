@@ -3,23 +3,32 @@
     <dimen name="zero">0dp</dimen>
     <dimen name="rounded_border">28dp</dimen>
 
+    <!-- Thickness -->
     <dimen name="divider_thickness">1dp</dimen>
     <dimen name="color_circle_thickness">3dp</dimen>
     <dimen name="stat_indicator_thickness">10dp</dimen>
 
+    <!-- Padding -->
     <dimen name="screen_padding">16dp</dimen>
     <dimen name="section_padding">24dp</dimen>
     <dimen name="regular_padding">8dp</dimen>
     <dimen name="less_regular_padding">4dp</dimen>
 
+    <!-- Size -->
+    <dimen name="app_logo_size">200dp</dimen>
     <dimen name="color_circle_size">50dp</dimen>
     <dimen name="circular_progress_indicator_size">50dp</dimen>
 
+    <!-- Length -->
     <dimen name="stat_indicator_length">220dp</dimen>
 
+    <!-- Height -->
     <dimen name="stat_header_height">40dp</dimen>
+    <dimen name="linear_progress_indicator_height">8dp</dimen>
 
+    <!-- Width -->
     <dimen name="circular_progress_indicator_width">6dp</dimen>
 
+    <!-- Radius -->
     <dimen name="stat_indicator_corner_radius">3dp</dimen>
 </resources>
