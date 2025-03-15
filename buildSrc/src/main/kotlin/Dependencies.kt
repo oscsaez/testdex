@@ -20,9 +20,6 @@ object Versions {
     // Arrow
     const val arrow = "1.2.4"
 
-    // Room
-    const val room = "2.6.1"
-
     // Datastore preferences
     const val datastorePreferences = "1.0.0"
 
@@ -37,6 +34,9 @@ object Versions {
 
     // Ktor
     const val ktor = "2.3.12"
+
+    // Realm
+    const val realm = "1.11.0"
 }
 
 object Libs {
@@ -59,11 +59,6 @@ object Libs {
     // Arrow
     const val arrow = "io.arrow-kt:arrow-core:${Versions.arrow}"
 
-    // Room
-    const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
-    const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
-    const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
-
     // Datastore preferences
     const val datastorePreferences = "androidx.datastore:datastore-preferences:${Versions.datastorePreferences}"
 
@@ -83,6 +78,9 @@ object Libs {
     const val ktorSerialization = "io.ktor:ktor-client-serialization:${Versions.ktor}"
     const val ktorContentNegotiation = "io.ktor:ktor-client-content-negotiation:${Versions.ktor}"
     const val ktorKotlinx = "io.ktor:ktor-serialization-kotlinx-json:${Versions.ktor}"
+
+    // Realm
+    const val realm = "io.realm.kotlin:library-base:${Versions.realm}"
 }
 
 object Config {

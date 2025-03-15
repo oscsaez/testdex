@@ -3,8 +3,8 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
-    id("androidx.room") version Versions.room apply false
     id("kotlinx-serialization")
+    id("io.realm.kotlin")
 }
 
 android {
@@ -82,11 +82,6 @@ dependencies {
     // Arrow for Either use
     implementation(Libs.arrow)
 
-    // Room
-    implementation(Libs.roomRuntime)
-    annotationProcessor(Libs.roomCompiler)
-    kapt(Libs.roomCompiler)
-
     // Datastore preferences
     implementation(Libs.datastorePreferences)
 
@@ -106,6 +101,9 @@ dependencies {
     implementation(Libs.ktorSerialization)
     implementation(Libs.ktorContentNegotiation)
     implementation(Libs.ktorKotlinx)
+
+    // Realm
+    implementation(Libs.realm)
 }
 
 kapt {
