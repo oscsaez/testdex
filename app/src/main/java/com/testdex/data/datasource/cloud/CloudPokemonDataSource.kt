@@ -1,4 +1,4 @@
-package com.testdex.data.datasource
+package com.testdex.data.datasource.cloud
 
 import arrow.core.Either
 import com.testdex.data.model.DataErrorType

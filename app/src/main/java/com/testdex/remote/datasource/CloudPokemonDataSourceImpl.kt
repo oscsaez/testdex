@@ -1,7 +1,7 @@
 package com.testdex.remote.datasource
 
 import arrow.core.Either
-import com.testdex.data.datasource.CloudPokemonDataSource
+import com.testdex.data.datasource.cloud.CloudPokemonDataSource
 import com.testdex.data.model.DataErrorType
 import com.testdex.data.model.PokemonBasicsData
 import com.testdex.remote.model.AllPokemonInfoRemote

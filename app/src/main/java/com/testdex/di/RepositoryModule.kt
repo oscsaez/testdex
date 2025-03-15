@@ -1,6 +1,7 @@
 package com.testdex.di
 
-import com.testdex.data.datasource.CloudPokemonDataSource
+import com.testdex.data.datasource.cloud.CloudPokemonDataSource
+import com.testdex.data.datasource.local.LocalPokemonDataSource
 import com.testdex.data.repository.PokemonRepositoryImpl
 import com.testdex.domain.repository.PokemonRepository
 import dagger.Module
@@ -16,6 +17,7 @@ object RepositoryModule {
     @Provides
     @Singleton
     fun providesPokemonRepository(
-        cloudPokemonDataSource: CloudPokemonDataSource
-    ): PokemonRepository = PokemonRepositoryImpl(cloudPokemonDataSource)
+        cloudPokemonDataSource: CloudPokemonDataSource,
+        localPokemonDataSource: LocalPokemonDataSource
+    ): PokemonRepository = PokemonRepositoryImpl(cloudPokemonDataSource, localPokemonDataSource)
 }

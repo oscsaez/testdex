@@ -9,5 +9,10 @@ interface PokemonRepository {
 
     val pokemonProgress: StateFlow<Float>
 
+    // Remote
     suspend fun retrieveAllPokemonBasics(): Either<ErrorType, List<PokemonBasics>>
+
+    // Local
+    suspend fun storeAllPokemonBasics(pokemonList: List<PokemonBasics>): Either<ErrorType, Unit>
+    suspend fun getAllPokemonBasics(): Either<ErrorType, List<PokemonBasics>>
 }
