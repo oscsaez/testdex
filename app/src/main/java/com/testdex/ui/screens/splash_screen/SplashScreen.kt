@@ -17,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -33,6 +34,8 @@ fun SplashScreen(
             .background(MaterialTheme.colorScheme.background),
         contentAlignment = Alignment.Center
     ) {
+        val context = LocalContext.current
+
         Column(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -43,20 +46,31 @@ fun SplashScreen(
                 painter = painterResource(id = R.drawable.poke_tactics_logo),
                 contentDescription = stringResource(id = R.string.app_logo_content_description))
             Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.screen_padding)))
-            LinearProgressIndicator(
-                progress = progress,
-                modifier = Modifier
-                    .fillMaxWidth(0.6f)
-                    .height(dimensionResource(id = R.dimen.linear_progress_indicator_height))
-                    .clip(RoundedCornerShape(dimensionResource(id = R.dimen.rounded_border))),
-                color = MaterialTheme.colorScheme.primary,
-                trackColor = MaterialTheme.colorScheme.secondary,
-            )
-            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.regular_padding)))
-            Text(
-                text = "${(progress * 100).toInt()} %",
-                color = MaterialTheme.colorScheme.onBackground
-            )
+
+            if(progress == 0.0f) {
+                Text(
+                    text = stringResource(id = R.string.loading_text),
+                    color = MaterialTheme.colorScheme.onBackground
+                )
+            } else {
+                LinearProgressIndicator(
+                    progress = progress,
+                    modifier = Modifier
+                        .fillMaxWidth(0.6f)
+                        .height(dimensionResource(id = R.dimen.linear_progress_indicator_height))
+                        .clip(RoundedCornerShape(dimensionResource(id = R.dimen.rounded_border))),
+                    color = MaterialTheme.colorScheme.primary,
+                    trackColor = MaterialTheme.colorScheme.secondary,
+                )
+                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.regular_padding)))
+                Text(
+                    text = context.getString(
+                        R.string.downloading_text_format,
+                        (progress * 100).toInt()
+                    ),
+                    color = MaterialTheme.colorScheme.onBackground
+                )
+            }
         }
     }
 }

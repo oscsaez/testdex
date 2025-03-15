@@ -75,7 +75,17 @@ fun PokemonBasicsData.toPokemonBasics() = PokemonBasics(
 
 fun List<PokemonBasicsData>.toPokemonBasicsList() = map { it.toPokemonBasics() }
 
+fun PokemonBasics.toPokemonBasicsData() = PokemonBasicsData(
+    pokedexOrder = pokedexOrder,
+    name = name,
+    types = types
+)
+
+fun List<PokemonBasics>.toPokemonBasicsDataList() = map { it.toPokemonBasicsData() }
+
 fun DataErrorType.toErrorType() = when(this) {
     is DataErrorType.NotFoundDataError -> ErrorType.NotFoundError
     is DataErrorType.ServerDataError -> ErrorType.ServerError
+    is DataErrorType.WriteDataError -> ErrorType.WriteError
+    is DataErrorType.ReadDataError -> ErrorType.ReadError
 }
