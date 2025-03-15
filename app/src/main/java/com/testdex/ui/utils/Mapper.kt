@@ -124,4 +124,6 @@ fun List<PokemonBasics>.toPokemonBasicsUIModelList() = map { it.toPokemonBasicsU
 fun ErrorType.toErrorTypeUIModel() = when(this) {
     is ErrorType.NotFoundError -> ErrorTypeUIModel.NotFoundErrorUIModel
     is ErrorType.ServerError -> ErrorTypeUIModel.ServerErrorUIModel
+    is ErrorType.WriteError -> ErrorTypeUIModel.WriteErrorUIModel
+    is ErrorType.ReadError -> ErrorTypeUIModel.ReadErrorUIModel
 }

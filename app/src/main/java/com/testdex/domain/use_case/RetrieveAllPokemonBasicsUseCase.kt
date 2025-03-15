@@ -10,9 +10,15 @@ import kotlinx.coroutines.flow.StateFlow
 class RetrieveAllPokemonBasicsUseCase(
     private val pokemonRepository: PokemonRepository
 ) {
-
     val pokemonProgress: StateFlow<Float> = pokemonRepository.pokemonProgress
     suspend operator fun invoke() : Either<ErrorType, List<PokemonBasics>> = either {
-        pokemonRepository.retrieveAllPokemonBasics().bind()
+        val pokemonFromLocalDb: List<PokemonBasics> = pokemonRepository.getAllPokemonBasics().bind()
+
+        pokemonFromLocalDb.ifEmpty {
+            val pokemonBasics: List<PokemonBasics> = pokemonRepository.retrieveAllPokemonBasics().bind()
+            pokemonRepository.storeAllPokemonBasics(pokemonBasics).bind()
+
+            pokemonBasics
+        }
     }
 }
