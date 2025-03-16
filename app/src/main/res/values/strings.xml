@@ -2,8 +2,11 @@
     <string name="app_name">PokeTactics</string>
 
     <!-- General -->
-    <string name="search_top_bar_text">Search by name</string>
     <string name="two_points_format">%1$s:</string>
+
+    <!-- Top Bar -->
+    <string name="search_top_bar_text">Search</string>
+    <string name="search_top_bar_tooltip_text">You can search different pokemon by pokedex order, name or type</string>
 
     <!-- Splash Screen -->
     <string name="app_logo_content_description">Logo</string>
