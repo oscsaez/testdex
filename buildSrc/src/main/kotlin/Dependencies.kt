@@ -5,7 +5,7 @@ object Versions {
     const val lifecycle = "2.6.2"
     const val compose = "1.8.2"
     const val composeBom = "2023.03.00"
-    const val material3 = "material3"
+    const val material3 = "1.3.1"
     const val composeNavigation = "2.7.7"
 
     // Testing
@@ -48,7 +48,7 @@ object Libs {
     const val composeUI = "androidx.compose.ui:ui"
     const val composeUIGraphics = "androidx.compose.ui:ui-graphics"
     const val composePreview = "androidx.compose.ui:ui-tooling-preview"
-    const val material3 = "androidx.compose.material3:${Versions.material3}"
+    const val material3 = "androidx.compose.material3:material3-android:${Versions.material3}"
     const val composeNavigation = "androidx.navigation:navigation-compose:${Versions.composeNavigation}"
 
     // Hilt

@@ -14,6 +14,8 @@
     <dimen name="regular_padding">8dp</dimen>
     <dimen name="less_regular_padding">4dp</dimen>
 
+    <dimen name="search_text_field_padding">6dp</dimen>
+
     <!-- Size -->
     <dimen name="app_logo_size">200dp</dimen>
     <dimen name="color_circle_size">50dp</dimen>
