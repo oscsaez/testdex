@@ -16,7 +16,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
 import com.testdex.R
 import com.testdex.ui.model.PokemonBasicsUIModel
 
@@ -43,6 +46,8 @@ fun PokedexItem(
                 .fillMaxWidth()
                 .padding(dimensionResource(id = R.dimen.screen_padding))
         ) {
+            val undefinedPokedexOrder = -1
+
             val (orderRef, nameRef, typesRef) = createRefs()
             val leftGuideline = createGuidelineFromStart(0.16f)
 
@@ -52,19 +57,25 @@ fun PokedexItem(
                     top.linkTo(parent.top)
                     bottom.linkTo(parent.bottom)
                 },
-                text = pokemonBasics.pokedexOrder.toString(),
+                text = if(pokemonBasics.pokedexOrder != undefinedPokedexOrder)
+                        pokemonBasics.pokedexOrder.toString()
+                    else stringResource(id = R.string.pokedex_order_not_available_symbol),
                 style = MaterialTheme.typography.titleSmall,
                 color = MaterialTheme.colorScheme.onBackground
             )
             Text(
                 modifier = Modifier.constrainAs(nameRef) {
                     start.linkTo(leftGuideline)
+                    end.linkTo(typesRef.start, margin = 10.dp)
                     top.linkTo(parent.top)
                     bottom.linkTo(parent.bottom)
+                    width = Dimension.fillToConstraints
                 },
                 text = pokemonBasics.name,
                 style = MaterialTheme.typography.titleSmall,
-                color = MaterialTheme.colorScheme.onBackground
+                color = MaterialTheme.colorScheme.onBackground,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
             )
             LazyRow(
                 modifier = Modifier.constrainAs(typesRef) {

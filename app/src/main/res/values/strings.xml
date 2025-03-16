@@ -23,6 +23,9 @@
     <string name="blue_color_theme_text">Blue</string>
     <string name="yellow_color_theme_text">Yellow</string>
     <string name="colors_theme_text">Colors</string>
+    
+    <!-- Pokedex Screen -->
+    <string name="pokedex_order_not_available_symbol">N/A</string>
 
     <!-- Pokemon info -->
     <string name="pokedex_number_text">Pokedex number</string>
