@@ -46,8 +46,6 @@ fun PokedexItem(
                 .fillMaxWidth()
                 .padding(dimensionResource(id = R.dimen.screen_padding))
         ) {
-            val undefinedPokedexOrder = -1
-
             val (orderRef, nameRef, typesRef) = createRefs()
             val leftGuideline = createGuidelineFromStart(0.16f)
 
@@ -57,7 +55,7 @@ fun PokedexItem(
                     top.linkTo(parent.top)
                     bottom.linkTo(parent.bottom)
                 },
-                text = if(pokemonBasics.pokedexOrder != undefinedPokedexOrder)
+                text = if(pokemonBasics.isPokedexOrderAvailable)
                         pokemonBasics.pokedexOrder.toString()
                     else stringResource(id = R.string.pokedex_order_not_available_symbol),
                 style = MaterialTheme.typography.titleSmall,
