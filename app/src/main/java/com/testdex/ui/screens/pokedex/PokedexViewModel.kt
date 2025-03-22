@@ -3,6 +3,7 @@ package com.testdex.ui.screens.pokedex
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.testdex.domain.use_case.RetrieveAllPokemonBasicsUseCase
+import com.testdex.ui.model.PokemonBasicsUIModel
 import com.testdex.ui.utils.toPokemonBasicsUIModelList
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -52,7 +53,7 @@ class PokedexViewModel @Inject constructor(
                         currentState.copy(
                             pokemonList = newPokemonList
                                 .toPokemonBasicsUIModelList()
-                                .sortedBy { it.pokedexOrder },
+                                .sort(),
                             loading = false
                         )
                     }
@@ -60,4 +61,10 @@ class PokedexViewModel @Inject constructor(
             )
         }
     }
+
+    private fun List<PokemonBasicsUIModel>.sort() = this.sortedWith(
+        compareBy {
+            if (!it.isPokedexOrderAvailable) Int.MAX_VALUE else it.pokedexOrder
+        }
+    )
 }
