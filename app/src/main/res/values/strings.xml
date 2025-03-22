@@ -3,6 +3,7 @@
 
     <!-- General -->
     <string name="two_points_format">%1$s:</string>
+    <string name="not_implemented_text">Not implemented</string>
 
     <!-- Top Bar -->
     <string name="search_top_bar_text">Search</string>
