@@ -47,10 +47,10 @@ class CloudPokemonDataSourceImpl(
         }
     }
 
-    override suspend fun retrievePokemonByPokedexOrder(pokedexOrder: Int): Either<DataErrorType, PokemonData> = coroutineScope {
+    override suspend fun retrievePokemonByName(name: String): Either<DataErrorType, PokemonData> = coroutineScope {
         safeApiCall(
             client = client,
-            url = "${Constants.POKEMON_URL}$pokedexOrder"
+            url = "${Constants.POKEMON_URL}$name"
         ) { response ->
             val pokemon: PokemonRemote = response.body()
 

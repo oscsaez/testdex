@@ -21,10 +21,10 @@ class PokemonViewModel @Inject constructor(
     val state: StateFlow<PokemonState> = _state.asStateFlow()
 
     fun onEvent(event: PokemonEvent) = when(event) {
-        is PokemonEvent.RetrievePokemon -> retrievePokemon(event.pokedexOrder)
+        is PokemonEvent.RetrievePokemon -> retrievePokemon(event.name)
     }
 
-    private fun retrievePokemon(pokedexOrder: Int) {
+    private fun retrievePokemon(name: String) {
         viewModelScope.launch {
             _state.update { currentState ->
                 currentState.copy(
@@ -33,7 +33,7 @@ class PokemonViewModel @Inject constructor(
                 )
             }
 
-            retrievePokemonUseCase(pokedexOrder).fold(
+            retrievePokemonUseCase(name).fold(
                 ifLeft = {
                     // TODO Error case
                 },

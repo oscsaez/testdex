@@ -8,7 +8,7 @@ import com.testdex.domain.repository.PokemonRepository
 class RetrievePokemon(
     private val pokemonRepository: PokemonRepository
 ) {
-    suspend operator fun invoke(pokedexOrder: Int): Either<ErrorType, Pokemon> {
-        return pokemonRepository.retrievePokemonByPokedexOrder(pokedexOrder)
+    suspend operator fun invoke(name: String): Either<ErrorType, Pokemon> {
+        return pokemonRepository.retrievePokemonByName(name)
     }
 }

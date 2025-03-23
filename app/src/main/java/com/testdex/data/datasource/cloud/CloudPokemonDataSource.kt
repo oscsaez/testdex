@@ -9,5 +9,5 @@ interface CloudPokemonDataSource {
 
     suspend fun retrieveAllPokemonUrls(): Either<DataErrorType, List<String>>
     suspend fun retrievePokemonBasics(url: String): Either<DataErrorType, PokemonBasicsData>
-    suspend fun retrievePokemonByPokedexOrder(pokedexOrder: Int): Either<DataErrorType, PokemonData>
+    suspend fun retrievePokemonByName(name: String): Either<DataErrorType, PokemonData>
 }

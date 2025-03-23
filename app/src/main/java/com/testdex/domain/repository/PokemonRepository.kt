@@ -12,7 +12,7 @@ interface PokemonRepository {
 
     // Remote
     suspend fun retrieveAllPokemonBasics(): Either<ErrorType, List<PokemonBasics>>
-    suspend fun retrievePokemonByPokedexOrder(pokedexOrder: Int): Either<ErrorType, Pokemon>
+    suspend fun retrievePokemonByName(name: String): Either<ErrorType, Pokemon>
 
     // Local
     suspend fun storeAllPokemonBasics(pokemonList: List<PokemonBasics>): Either<ErrorType, Unit>

@@ -50,9 +50,9 @@ class PokemonRepositoryImpl(
         }
     }
 
-    override suspend fun retrievePokemonByPokedexOrder(pokedexOrder: Int): Either<ErrorType, Pokemon> = withContext(Dispatchers.IO) {
+    override suspend fun retrievePokemonByName(name: String): Either<ErrorType, Pokemon> = withContext(Dispatchers.IO) {
         either {
-            cloudPokemonDataSource.retrievePokemonByPokedexOrder(pokedexOrder).bind().toPokemon()
+            cloudPokemonDataSource.retrievePokemonByName(name).bind().toPokemon()
         }.mapLeft {
             it.toErrorType()
         }

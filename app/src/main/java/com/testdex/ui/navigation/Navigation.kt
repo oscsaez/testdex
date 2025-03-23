@@ -46,12 +46,12 @@ fun Navigation(
         }
         composable(
             route = TestdexScreen.TestdexPokemonScreen.route,
-            arguments = listOf(navArgument("pokedexOrder") { type = NavType.IntType })
+            arguments = listOf(navArgument("name") { type = NavType.StringType })
         ) { backStackEntry ->
-            val pokedexOrder = backStackEntry.arguments?.getInt("pokedexOrder")
+            val name = backStackEntry.arguments?.getString("name")
 
             LaunchedEffect(key1 = Unit) {
-                pokedexOrder?.let {
+                name?.let {
                     pokemonViewModel.onEvent(PokemonEvent.RetrievePokemon(it))
                 }
             }

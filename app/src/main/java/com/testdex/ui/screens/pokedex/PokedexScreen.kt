@@ -32,7 +32,7 @@ import com.testdex.ui.model.PokemonBasicsUIModel
 fun PokedexScreen(
     modifier: Modifier = Modifier,
     state: PokedexState,
-    onPokemonClick: (Int) -> Unit
+    onPokemonClick: (String) -> Unit
 ) {
     val context = LocalContext.current
     val listState = rememberLazyListState()
@@ -84,7 +84,7 @@ fun PokedexScreen(
                             modifier = Modifier.padding(vertical = dimensionResource(id = R.dimen.regular_padding)),
                             pokemonBasics = filteredPokemonList[index]
                         ) {
-                            onPokemonClick(filteredPokemonList[index].pokedexOrder)
+                            onPokemonClick(filteredPokemonList[index].name)
                         }
                         TestdexHorizontalDivider()
                     }
@@ -93,7 +93,7 @@ fun PokedexScreen(
                             modifier = Modifier.padding(top = dimensionResource(id = R.dimen.regular_padding)),
                             pokemonBasics = filteredPokemonList.last()
                         ) {
-                            onPokemonClick(filteredPokemonList.last().pokedexOrder)
+                            onPokemonClick(filteredPokemonList.last().name)
                         }
                     }
                 }
