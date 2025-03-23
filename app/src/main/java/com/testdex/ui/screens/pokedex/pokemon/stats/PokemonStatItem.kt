@@ -28,7 +28,7 @@ fun PokemonStatItem(
         modifier = modifier.fillMaxWidth()
     ) {
         val (nameRef, baseRef, indicatorRef) = createRefs()
-        val leftGuideline = createGuidelineFromStart(0.14f)
+        val leftGuideline = createGuidelineFromStart(0.2f)
         val middleGuideline = createGuidelineFromStart(0.29f)
         val rightGuideline = createGuidelineFromStart(0.33f)
 
@@ -62,9 +62,9 @@ fun PokemonStatItem(
                     bottom.linkTo(parent.bottom)
                 }
                 .clip(RoundedCornerShape(dimensionResource(id = R.dimen.stat_indicator_corner_radius))),
-            progress = stat.base / UIConstants.MAX_TOTAL_STATS_NUMBER,
+            progress = { stat.base / UIConstants.MAX_TOTAL_STATS_NUMBER },
             color = color,
-            trackColor = MaterialTheme.colorScheme.primaryContainer
+            trackColor = MaterialTheme.colorScheme.primaryContainer,
         )
     }
 }

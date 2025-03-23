@@ -131,8 +131,8 @@ private fun String.toPrettyStatName(): String = when(this) {
     "hp" -> "HP"
     "attack" -> "Attack"
     "defense" -> "Defense"
-    "special-attack" -> "Sp.Attack"
-    "special-defense" -> "Sp.Defense"
+    "special-attack" -> "Sp. Attack"
+    "special-defense" -> "Sp. Defense"
     "speed" -> "Speed"
     else -> this
 }
