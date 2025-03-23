@@ -41,8 +41,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import com.testdex.R
-import com.testdex.ui.utils.empty
 import com.testdex.ui.utils.roundedBottomBordersShape
+import com.testdex.utils.empty
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)

@@ -34,6 +34,7 @@ import com.testdex.ui.theme.PsychicTypeColor
 import com.testdex.ui.theme.RockTypeColor
 import com.testdex.ui.theme.SteelTypeColor
 import com.testdex.ui.theme.WaterTypeColor
+import com.testdex.utils.replaceGenderSymbols
 
 // TODO Deal with domain errors
 
@@ -93,7 +94,7 @@ fun Sprite.toSpriteUIModel() = SpriteUIModel(
 )
 
 fun Stat.toStatUIModel() = StatUIModel(
-    name = name,
+    name = name.toPrettyStatName(),
     base = base
 )
 
@@ -111,8 +112,6 @@ fun Pokemon.toPokemonUIModel() = PokemonUIModel(
     sprite = sprite.toSpriteUIModel()
 )
 
-fun List<Pokemon>.toPokemonUIModelList() = map { it.toPokemonUIModel() }
-
 fun PokemonBasics.toPokemonBasicsUIModel() = PokemonBasicsUIModel(
     pokedexOrder = pokedexOrder,
     name = name,
@@ -126,4 +125,14 @@ fun ErrorType.toErrorTypeUIModel() = when(this) {
     is ErrorType.ServerError -> ErrorTypeUIModel.ServerErrorUIModel
     is ErrorType.WriteError -> ErrorTypeUIModel.WriteErrorUIModel
     is ErrorType.ReadError -> ErrorTypeUIModel.ReadErrorUIModel
+}
+
+private fun String.toPrettyStatName(): String = when(this) {
+    "hp" -> "HP"
+    "attack" -> "Attack"
+    "defense" -> "Defense"
+    "special-attack" -> "Sp.Attack"
+    "special-defense" -> "Sp.Defense"
+    "speed" -> "Speed"
+    else -> this
 }
