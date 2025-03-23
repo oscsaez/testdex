@@ -6,9 +6,11 @@ import com.testdex.data.datasource.cloud.CloudPokemonDataSource
 import com.testdex.data.datasource.local.LocalPokemonDataSource
 import com.testdex.data.model.PokemonBasicsData
 import com.testdex.data.utils.toErrorType
+import com.testdex.data.utils.toPokemon
 import com.testdex.data.utils.toPokemonBasicsDataList
 import com.testdex.data.utils.toPokemonBasicsList
 import com.testdex.domain.model.ErrorType
+import com.testdex.domain.model.Pokemon
 import com.testdex.domain.model.PokemonBasics
 import com.testdex.domain.repository.PokemonRepository
 import kotlinx.coroutines.Dispatchers
@@ -43,6 +45,14 @@ class PokemonRepositoryImpl(
                     pokemonBasics
                 }
             }.awaitAll().toPokemonBasicsList()
+        }.mapLeft {
+            it.toErrorType()
+        }
+    }
+
+    override suspend fun retrievePokemonByPokedexOrder(pokedexOrder: Int): Either<ErrorType, Pokemon> = withContext(Dispatchers.IO) {
+        either {
+            cloudPokemonDataSource.retrievePokemonByPokedexOrder(pokedexOrder).bind().toPokemon()
         }.mapLeft {
             it.toErrorType()
         }
