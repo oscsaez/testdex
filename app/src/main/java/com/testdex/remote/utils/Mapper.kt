@@ -61,8 +61,8 @@ fun PokemonRemote.toPokemonData(
 ) = PokemonData(
     pokedexOrder = pokedexOrder,
     name = name.capitalize(Locale.ROOT),
-    height = height,
-    weight = weight,
+    height = height / Constants.POKEMON_MEASUREMENT_DIVISOR,
+    weight = weight / Constants.POKEMON_MEASUREMENT_DIVISOR,
     types = types.map { it.typeInfo.name },
     stats = stats.toStatsData(),
     abilities = abilities.toAbilitiesData(),

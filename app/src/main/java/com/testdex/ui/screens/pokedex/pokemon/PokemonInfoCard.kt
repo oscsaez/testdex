@@ -191,7 +191,10 @@ fun PokemonInfoCard(
             }
             InfoRow(
                 titleResId = R.string.height_text,
-                info = pokemon.height.toString()
+                info = context.getString(
+                    R.string.height_format,
+                    pokemon.height
+                )
             )
             TestdexHorizontalDivider(
                 modifier = Modifier.padding(
@@ -201,7 +204,10 @@ fun PokemonInfoCard(
             )
             InfoRow(
                 titleResId = R.string.weight_text,
-                info = pokemon.weight.toString()
+                info = context.getString(
+                    R.string.weight_format,
+                    pokemon.weight
+                )
             )
         }
     }

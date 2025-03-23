@@ -38,6 +38,8 @@
     <string name="hidden_ability_text">Hidden ability</string>
     <string name="height_text">Height</string>
     <string name="weight_text">Weight</string>
+    <string name="height_format">%1$.1f m</string>
+    <string name="weight_format">%1$.1f kg</string>
     <string name="sprites_text">Sprites</string>
     <string name="shiny_text">Shiny</string>
     <string name="male_text">Male</string>
