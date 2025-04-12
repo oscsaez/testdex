@@ -6,6 +6,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -142,7 +143,9 @@ fun PokemonInfoCard(
                 .padding(vertical = dimensionResource(id = R.dimen.regular_padding))
         ) {
             SubcomposeAsyncImage(
-                modifier = Modifier.fillMaxSize(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(dimensionResource(id = R.dimen.pokemon_image_height)),
                 model = pokemon.sprite.officialArtworkURI,
                 contentDescription = "${pokemon.name
                     .replaceGenderSymbols()
