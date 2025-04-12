@@ -56,13 +56,11 @@ fun Navigation(
                 }
             }
 
-            pokemonState.pokemon?.let {
-                PokemonScreen(
-                    loading = pokemonState.loading,
-                    pokemon = it
-                ) {
-                    // TODO Add to favorite pokemon
-                }
+            PokemonScreen(
+                loading = pokemonState.loading,
+                pokemon = pokemonState.pokemon
+            ) {
+                // TODO Add to favorite pokemon
             }
         }
         composable(TestdexScreen.TestdexTableTypesScreen.route) {

@@ -6,6 +6,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -16,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -23,8 +25,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.constraintlayout.compose.ConstraintLayout
 import coil.compose.SubcomposeAsyncImage
 import com.testdex.R
-import com.testdex.ui.composables.TestdexCircularProgressIndicator
 import com.testdex.ui.composables.TestdexHorizontalDivider
+import com.testdex.ui.composables.TestdexLoadingBox
 import com.testdex.ui.model.PokemonUIModel
 import com.testdex.ui.model.TypeUIModel
 import com.testdex.ui.theme.Gray
@@ -141,13 +143,18 @@ fun PokemonInfoCard(
                 .padding(vertical = dimensionResource(id = R.dimen.regular_padding))
         ) {
             SubcomposeAsyncImage(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(dimensionResource(id = R.dimen.pokemon_image_height)),
                 model = pokemon.sprite.officialArtworkURI,
                 contentDescription = "${pokemon.name
                     .replaceGenderSymbols()
                     .toTitleCaseWithoutHyphen()} official artwork",
                 alignment = Alignment.Center,
-                loading = { TestdexCircularProgressIndicator() }
+                loading = {
+                    TestdexLoadingBox(modifier = Modifier.fillMaxSize())
+                },
+                contentScale = ContentScale.Fit
             )
             TestdexHorizontalDivider(
                 modifier = Modifier.padding(
