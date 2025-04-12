@@ -4,16 +4,16 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.res.dimensionResource
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.testdex.R
+import com.testdex.ui.composables.GradientLinearProgressIndicator
 import com.testdex.ui.model.StatUIModel
 import com.testdex.ui.utils.UIConstants
 
@@ -21,7 +21,7 @@ import com.testdex.ui.utils.UIConstants
 fun PokemonStatItem(
     modifier: Modifier = Modifier,
     stat: StatUIModel,
-    color: Color
+    brush: Brush
 ) {
     ConstraintLayout(
         modifier = modifier.fillMaxWidth()
@@ -51,7 +51,7 @@ fun PokemonStatItem(
             style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.onBackground
         )
-        LinearProgressIndicator(
+        GradientLinearProgressIndicator(
             modifier = Modifier
                 .width(dimensionResource(id = R.dimen.stat_indicator_length))
                 .height(dimensionResource(id = R.dimen.stat_indicator_thickness))
@@ -61,8 +61,8 @@ fun PokemonStatItem(
                     bottom.linkTo(parent.bottom)
                 }
                 .clip(RoundedCornerShape(dimensionResource(id = R.dimen.stat_indicator_corner_radius))),
-            progress = { stat.base / UIConstants.MAX_TOTAL_STATS_NUMBER },
-            color = color,
+            progress = stat.base / UIConstants.MAX_TOTAL_STATS_NUMBER,
+            brush = brush,
             trackColor = MaterialTheme.colorScheme.primaryContainer,
         )
     }

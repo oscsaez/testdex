@@ -29,6 +29,7 @@ import com.testdex.ui.composables.TestdexHorizontalDivider
 import com.testdex.ui.composables.TestdexLoadingBox
 import com.testdex.ui.model.PokemonUIModel
 import com.testdex.ui.model.TypeUIModel
+import com.testdex.ui.utils.gradient
 import com.testdex.utils.replaceGenderSymbols
 import com.testdex.utils.toTitleCaseWithoutHyphen
 
@@ -38,8 +39,6 @@ fun PokemonInfoCard(
     pokemon: PokemonUIModel
 ) {
     val context = LocalContext.current
-
-    // TODO Maybe a brush (gradient) for pokemon with two types
 
     @Composable
     fun InfoRow(
@@ -126,7 +125,7 @@ fun PokemonInfoCard(
         shape = RoundedCornerShape(dimensionResource(id = R.dimen.rounded_border)),
         border = BorderStroke(
             width = dimensionResource(id = R.dimen.regular_padding),
-            color = pokemon.types.first().color
+            brush = gradient(pokemon.types.map { it.color }),
         ),
         elevation = CardDefaults.cardElevation(
             defaultElevation = dimensionResource(id = R.dimen.zero)

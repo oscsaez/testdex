@@ -24,6 +24,7 @@ import com.testdex.ui.composables.TestdexTitleTopBar
 import com.testdex.ui.model.PokemonUIModel
 import com.testdex.ui.screens.pokedex.pokemon.moves.PokemonMovesList
 import com.testdex.ui.screens.pokedex.pokemon.stats.PokemonStatsList
+import com.testdex.ui.utils.gradient
 import com.testdex.utils.replaceGenderSymbols
 import com.testdex.utils.toTitleCaseWithoutHyphen
 
@@ -91,7 +92,7 @@ fun PokemonScreen(
                                     .padding(top = dimensionResource(id = R.dimen.regular_padding))
                                     .padding(bottom = dimensionResource(id = R.dimen.section_padding)),
                                 stats = loadedPokemon.stats,
-                                typeColor = loadedPokemon.types.first().color
+                                typesBrush = gradient(pokemon.types.map { it.color })
                             )
                             Text(
                                 text = stringResource(id = R.string.moves_text),
