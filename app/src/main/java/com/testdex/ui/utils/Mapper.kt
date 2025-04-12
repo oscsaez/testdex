@@ -93,7 +93,7 @@ fun Sprite.toSpriteUIModel() = SpriteUIModel(
 )
 
 fun Stat.toStatUIModel() = StatUIModel(
-    name = name,
+    name = name.toPrettyStatName(),
     base = base
 )
 
@@ -101,7 +101,7 @@ fun List<Stat>.toStatsUIModel() = map { it.toStatUIModel() }
 
 fun Pokemon.toPokemonUIModel() = PokemonUIModel(
     pokedexOrder = pokedexOrder,
-    name = name.replaceGenderSymbols(),
+    name = name,
     height = height,
     weight = weight,
     types = types.toTypesUIModel(),
@@ -110,8 +110,6 @@ fun Pokemon.toPokemonUIModel() = PokemonUIModel(
     moves = moves.toMovesUIModel(),
     sprite = sprite.toSpriteUIModel()
 )
-
-fun List<Pokemon>.toPokemonUIModelList() = map { it.toPokemonUIModel() }
 
 fun PokemonBasics.toPokemonBasicsUIModel() = PokemonBasicsUIModel(
     pokedexOrder = pokedexOrder,
@@ -126,4 +124,14 @@ fun ErrorType.toErrorTypeUIModel() = when(this) {
     is ErrorType.ServerError -> ErrorTypeUIModel.ServerErrorUIModel
     is ErrorType.WriteError -> ErrorTypeUIModel.WriteErrorUIModel
     is ErrorType.ReadError -> ErrorTypeUIModel.ReadErrorUIModel
+}
+
+private fun String.toPrettyStatName(): String = when(this) {
+    "hp" -> "HP"
+    "attack" -> "Attack"
+    "defense" -> "Defense"
+    "special-attack" -> "Sp. Attack"
+    "special-defense" -> "Sp. Defense"
+    "speed" -> "Speed"
+    else -> this
 }

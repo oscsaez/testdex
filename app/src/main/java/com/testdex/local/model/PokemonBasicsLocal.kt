@@ -1,6 +1,6 @@
 package com.testdex.local.model
 
-import com.testdex.ui.utils.empty
+import com.testdex.utils.empty
 import io.realm.kotlin.ext.realmListOf
 import io.realm.kotlin.types.RealmList
 import io.realm.kotlin.types.RealmObject

@@ -22,6 +22,8 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.testdex.R
 import com.testdex.ui.model.PokemonBasicsUIModel
+import com.testdex.utils.replaceGenderSymbols
+import com.testdex.utils.toTitleCaseWithoutHyphen
 
 @Composable
 fun PokedexItem(
@@ -69,7 +71,9 @@ fun PokedexItem(
                     bottom.linkTo(parent.bottom)
                     width = Dimension.fillToConstraints
                 },
-                text = pokemonBasics.name,
+                text = pokemonBasics.name
+                    .replaceGenderSymbols()
+                    .toTitleCaseWithoutHyphen(),
                 style = MaterialTheme.typography.titleSmall,
                 color = MaterialTheme.colorScheme.onBackground,
                 maxLines = 1,

@@ -6,6 +6,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -16,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -23,11 +25,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.constraintlayout.compose.ConstraintLayout
 import coil.compose.SubcomposeAsyncImage
 import com.testdex.R
-import com.testdex.ui.composables.TestdexCircularProgressIndicator
 import com.testdex.ui.composables.TestdexHorizontalDivider
+import com.testdex.ui.composables.TestdexLoadingBox
 import com.testdex.ui.model.PokemonUIModel
 import com.testdex.ui.model.TypeUIModel
-import com.testdex.ui.theme.Gray
+import com.testdex.ui.utils.gradient
+import com.testdex.utils.replaceGenderSymbols
+import com.testdex.utils.toTitleCaseWithoutHyphen
 
 @Composable
 fun PokemonInfoCard(
@@ -35,8 +39,6 @@ fun PokemonInfoCard(
     pokemon: PokemonUIModel
 ) {
     val context = LocalContext.current
-
-    // TODO Maybe a brush (gradient) for pokemon with two types
 
     @Composable
     fun InfoRow(
@@ -71,7 +73,7 @@ fun PokemonInfoCard(
                 },
                 text = info,
                 style = MaterialTheme.typography.bodyLarge,
-                color = Gray
+                color = MaterialTheme.colorScheme.secondary
             )
         }
     }
@@ -123,7 +125,7 @@ fun PokemonInfoCard(
         shape = RoundedCornerShape(dimensionResource(id = R.dimen.rounded_border)),
         border = BorderStroke(
             width = dimensionResource(id = R.dimen.regular_padding),
-            color = pokemon.types.first().color
+            brush = gradient(pokemon.types.map { it.color }),
         ),
         elevation = CardDefaults.cardElevation(
             defaultElevation = dimensionResource(id = R.dimen.zero)
@@ -139,11 +141,18 @@ fun PokemonInfoCard(
                 .padding(vertical = dimensionResource(id = R.dimen.regular_padding))
         ) {
             SubcomposeAsyncImage(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(dimensionResource(id = R.dimen.pokemon_image_height)),
                 model = pokemon.sprite.officialArtworkURI,
-                contentDescription = "${pokemon.name} official artwork",
+                contentDescription = "${pokemon.name
+                    .replaceGenderSymbols()
+                    .toTitleCaseWithoutHyphen()} official artwork",
                 alignment = Alignment.Center,
-                loading = { TestdexCircularProgressIndicator() }
+                loading = {
+                    TestdexLoadingBox(modifier = Modifier.fillMaxSize())
+                },
+                contentScale = ContentScale.Fit
             )
             TestdexHorizontalDivider(
                 modifier = Modifier.padding(
@@ -172,7 +181,12 @@ fun PokemonInfoCard(
                 )
             )
             pokemon.abilities.find { !it.isHidden }?.let {
-                InfoRow(titleResId = R.string.ability_text, info = it.name)
+                InfoRow(
+                    titleResId = R.string.ability_text,
+                    info = it.name
+                        .replaceGenderSymbols()
+                        .toTitleCaseWithoutHyphen()
+                )
             }
             TestdexHorizontalDivider(
                 modifier = Modifier.padding(
@@ -181,7 +195,12 @@ fun PokemonInfoCard(
                 )
             )
             pokemon.abilities.find { it.isHidden }?.let {
-                InfoRow(titleResId = R.string.hidden_ability_text, info = it.name)
+                InfoRow(
+                    titleResId = R.string.hidden_ability_text,
+                    info = it.name
+                        .replaceGenderSymbols()
+                        .toTitleCaseWithoutHyphen()
+                )
                 TestdexHorizontalDivider(
                     modifier = Modifier.padding(
                         horizontal = dimensionResource(id = R.dimen.screen_padding),
@@ -191,7 +210,10 @@ fun PokemonInfoCard(
             }
             InfoRow(
                 titleResId = R.string.height_text,
-                info = pokemon.height.toString()
+                info = context.getString(
+                    R.string.height_format,
+                    pokemon.height
+                )
             )
             TestdexHorizontalDivider(
                 modifier = Modifier.padding(
@@ -201,7 +223,10 @@ fun PokemonInfoCard(
             )
             InfoRow(
                 titleResId = R.string.weight_text,
-                info = pokemon.weight.toString()
+                info = context.getString(
+                    R.string.weight_format,
+                    pokemon.weight
+                )
             )
         }
     }

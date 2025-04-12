@@ -7,7 +7,6 @@ import com.testdex.data.model.PokemonBasicsData
 import com.testdex.data.model.PokemonData
 import com.testdex.data.model.SpriteData
 import com.testdex.data.model.StatData
-import com.testdex.remote.model.AbilityEffectRemote
 import com.testdex.remote.model.AbilityRemote
 import com.testdex.remote.model.MoveInfoRemote
 import com.testdex.remote.model.MoveRemote
@@ -16,7 +15,7 @@ import com.testdex.remote.model.PokemonRemote
 import com.testdex.remote.model.RemoteErrorType
 import com.testdex.remote.model.SpriteRemote
 import com.testdex.remote.model.StatRemote
-import java.util.Locale
+import com.testdex.utils.empty
 
 fun StatRemote.toStatData() = StatData(
     name = statInfo.name,
@@ -25,28 +24,23 @@ fun StatRemote.toStatData() = StatData(
 
 fun List<StatRemote>.toStatsData() = map { it.toStatData() }
 
-fun AbilityRemote.toAbilityData(abilityEffects: AbilityEffectRemote) = AbilityData(
-    name = abilityInfo.name.capitalize(Locale.ROOT),
-    description = abilityEffects.effectEntries.first().effect,
+// TODO Retrieve description of the ability
+fun AbilityRemote.toAbilityData() = AbilityData(
+    name = abilityInfo.name,
+    description = String.empty,
     isHidden = isHidden
 )
 
-fun List<AbilityRemote>.toAbilitiesData(abilityEffectsList: List<AbilityEffectRemote>) = mapIndexed { index, abilityRemote ->
-    abilityRemote.toAbilityData(abilityEffectsList[index])
-}
+fun List<AbilityRemote>.toAbilitiesData() = map { it.toAbilityData() }
 
 fun MoveRemote.toMoveData(moveInfo: MoveInfoRemote) = MoveData(
     name = moveUrl.name,
     power = moveInfo.power,
     accuracy = moveInfo.accuracy,
     pp = moveInfo.pp,
-    description = moveInfo.effectEntries.firstOrNull()?.effect ?: "", // TODO Remove this empty string
+    description = moveInfo.effectEntries.firstOrNull()?.effect ?: String.empty,
     type = moveInfo.type.name
 )
-
-fun List<MoveRemote>.toMovesData(moveInfoList: List<MoveInfoRemote>) = mapIndexed { index, moveRemote ->
-    moveRemote.toMoveData(moveInfoList[index])
-}
 
 fun SpriteRemote.toSpriteData() = SpriteData(
     officialArtworkURI = otherSprites.officialArtworkSpriteRemote.frontMaleURI,
@@ -61,23 +55,22 @@ fun SpriteRemote.toSpriteData() = SpriteData(
 )
 
 fun PokemonRemote.toPokemonData(
-    abilities: List<AbilityData>,
     moves: List<MoveData>
 ) = PokemonData(
     pokedexOrder = pokedexOrder,
-    name = name.capitalize(Locale.ROOT),
-    height = height,
-    weight = weight,
+    name = name,
+    height = height / Constants.POKEMON_MEASUREMENT_DIVISOR,
+    weight = weight / Constants.POKEMON_MEASUREMENT_DIVISOR,
     types = types.map { it.typeInfo.name },
     stats = stats.toStatsData(),
-    abilities = abilities,
+    abilities = abilities.toAbilitiesData(),
     moves = moves,
     sprite = sprite.toSpriteData()
 )
 
 fun PokemonBasicsRemote.toPokemonBasicsData() = PokemonBasicsData(
     pokedexOrder = pokedexOrder,
-    name = name.capitalize(Locale.ROOT),
+    name = name,
     types = types.map { it.typeInfo.name }
 )
 

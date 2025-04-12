@@ -53,7 +53,7 @@ fun SpriteData.toSprite() = Sprite(
     frontShinyFemaleURI = frontShinyFemaleURI
 )
 
-fun PokemonData.toPokemonList() = Pokemon(
+fun PokemonData.toPokemon() = Pokemon(
     pokedexOrder = pokedexOrder,
     name = name,
     height = height,
@@ -64,8 +64,6 @@ fun PokemonData.toPokemonList() = Pokemon(
     moves = moves.toMoves(),
     sprite = sprite.toSprite()
 )
-
-fun List<PokemonData>.toPokemonList() = map { it.toPokemonList() }
 
 fun PokemonBasicsData.toPokemonBasics() = PokemonBasics(
     pokedexOrder = pokedexOrder,
