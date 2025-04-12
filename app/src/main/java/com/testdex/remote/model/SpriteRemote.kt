@@ -8,11 +8,11 @@ data class SpriteRemote(
     @SerialName("other") // Be careful with this
     val otherSprites: OtherSpritesRemote,
     @SerialName("back_default")
-    val backMaleURI: String,
+    val backMaleURI: String?,
     @SerialName("back_female")
     val backFemaleURI: String?,
     @SerialName("back_shiny")
-    val backShinyMaleURI: String,
+    val backShinyMaleURI: String?,
     @SerialName("back_shiny_female")
     val backShinyFemaleURI: String?,
     @SerialName("front_default")
