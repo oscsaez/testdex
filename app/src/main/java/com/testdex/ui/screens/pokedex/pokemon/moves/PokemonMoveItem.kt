@@ -15,7 +15,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import com.testdex.R
 import com.testdex.ui.model.MoveUIModel
-import com.testdex.ui.theme.Gray
 import com.testdex.utils.toTitleCaseWithoutHyphen
 
 @Composable
@@ -45,7 +44,7 @@ fun PokemonMoveItem(
                 .padding(start = dimensionResource(id = R.dimen.regular_padding)),
             text = move.pp.toString(),
             style = MaterialTheme.typography.bodyMedium,
-            color = Gray,
+            color = MaterialTheme.colorScheme.secondary,
             textAlign = TextAlign.Center
         )
         Text(
@@ -56,7 +55,7 @@ fun PokemonMoveItem(
                 stringResource(id = R.string.no_number_text)
             },
             style = MaterialTheme.typography.bodyMedium,
-            color = Gray,
+            color = MaterialTheme.colorScheme.secondary,
             textAlign = TextAlign.Center
         )
         Text(
@@ -67,7 +66,7 @@ fun PokemonMoveItem(
                 stringResource(id = R.string.no_number_text)
             },
             style = MaterialTheme.typography.bodyMedium,
-            color = Gray,
+            color = MaterialTheme.colorScheme.secondary,
             textAlign = TextAlign.Center
         )
     }

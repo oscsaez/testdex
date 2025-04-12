@@ -15,7 +15,6 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.testdex.R
 import com.testdex.ui.model.StatUIModel
-import com.testdex.ui.theme.Gray
 import com.testdex.ui.utils.UIConstants
 
 @Composable
@@ -40,7 +39,7 @@ fun PokemonStatItem(
             },
             text = stat.name,
             style = MaterialTheme.typography.bodyMedium,
-            color = Gray
+            color = MaterialTheme.colorScheme.secondary
         )
         Text(
             modifier = Modifier.constrainAs(baseRef) {

@@ -29,7 +29,6 @@ import com.testdex.ui.composables.TestdexHorizontalDivider
 import com.testdex.ui.composables.TestdexLoadingBox
 import com.testdex.ui.model.PokemonUIModel
 import com.testdex.ui.model.TypeUIModel
-import com.testdex.ui.theme.Gray
 import com.testdex.utils.replaceGenderSymbols
 import com.testdex.utils.toTitleCaseWithoutHyphen
 
@@ -75,7 +74,7 @@ fun PokemonInfoCard(
                 },
                 text = info,
                 style = MaterialTheme.typography.bodyLarge,
-                color = Gray
+                color = MaterialTheme.colorScheme.secondary
             )
         }
     }
