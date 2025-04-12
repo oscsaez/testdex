@@ -16,8 +16,6 @@ import com.testdex.remote.model.RemoteErrorType
 import com.testdex.remote.model.SpriteRemote
 import com.testdex.remote.model.StatRemote
 import com.testdex.utils.empty
-import com.testdex.utils.toTitleCaseWithoutHyphen
-import java.util.Locale
 
 fun StatRemote.toStatData() = StatData(
     name = statInfo.name,
@@ -28,7 +26,7 @@ fun List<StatRemote>.toStatsData() = map { it.toStatData() }
 
 // TODO Retrieve description of the ability
 fun AbilityRemote.toAbilityData() = AbilityData(
-    name = abilityInfo.name.toTitleCaseWithoutHyphen(),
+    name = abilityInfo.name,
     description = String.empty,
     isHidden = isHidden
 )
@@ -36,7 +34,7 @@ fun AbilityRemote.toAbilityData() = AbilityData(
 fun List<AbilityRemote>.toAbilitiesData() = map { it.toAbilityData() }
 
 fun MoveRemote.toMoveData(moveInfo: MoveInfoRemote) = MoveData(
-    name = moveUrl.name.toTitleCaseWithoutHyphen(),
+    name = moveUrl.name,
     power = moveInfo.power,
     accuracy = moveInfo.accuracy,
     pp = moveInfo.pp,
@@ -60,7 +58,7 @@ fun PokemonRemote.toPokemonData(
     moves: List<MoveData>
 ) = PokemonData(
     pokedexOrder = pokedexOrder,
-    name = name.capitalize(Locale.ROOT),
+    name = name,
     height = height / Constants.POKEMON_MEASUREMENT_DIVISOR,
     weight = weight / Constants.POKEMON_MEASUREMENT_DIVISOR,
     types = types.map { it.typeInfo.name },
@@ -72,7 +70,7 @@ fun PokemonRemote.toPokemonData(
 
 fun PokemonBasicsRemote.toPokemonBasicsData() = PokemonBasicsData(
     pokedexOrder = pokedexOrder,
-    name = name.capitalize(Locale.ROOT),
+    name = name,
     types = types.map { it.typeInfo.name }
 )
 

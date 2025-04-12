@@ -27,6 +27,8 @@ import com.testdex.ui.composables.TestdexTitleTopBar
 import com.testdex.ui.model.PokemonUIModel
 import com.testdex.ui.screens.pokedex.pokemon.moves.PokemonMovesList
 import com.testdex.ui.screens.pokedex.pokemon.stats.PokemonStatsList
+import com.testdex.utils.replaceGenderSymbols
+import com.testdex.utils.toTitleCaseWithoutHyphen
 
 @Composable
 fun PokemonScreen(
@@ -42,7 +44,9 @@ fun PokemonScreen(
         modifier = modifier,
         topBar = {
             TestdexTitleTopBar(
-                title = pokemon.name,
+                title = pokemon.name
+                    .replaceGenderSymbols()
+                    .toTitleCaseWithoutHyphen(),
                 actions = {
                     IconButton(
                         modifier = Modifier.padding(end = dimensionResource(id = R.dimen.regular_padding)),

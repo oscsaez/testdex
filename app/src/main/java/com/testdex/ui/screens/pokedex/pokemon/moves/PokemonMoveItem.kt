@@ -16,6 +16,7 @@ import androidx.compose.ui.text.style.TextAlign
 import com.testdex.R
 import com.testdex.ui.model.MoveUIModel
 import com.testdex.ui.theme.Gray
+import com.testdex.utils.toTitleCaseWithoutHyphen
 
 @Composable
 fun PokemonMoveItem(
@@ -30,7 +31,7 @@ fun PokemonMoveItem(
             modifier = Modifier
                 .weight(2.6f)
                 .padding(start = dimensionResource(id = R.dimen.screen_padding)),
-            text = move.name,
+            text = move.name.toTitleCaseWithoutHyphen(),
             style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.onBackground
         )

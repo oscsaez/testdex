@@ -28,6 +28,8 @@ import com.testdex.ui.composables.TestdexHorizontalDivider
 import com.testdex.ui.model.PokemonUIModel
 import com.testdex.ui.model.TypeUIModel
 import com.testdex.ui.theme.Gray
+import com.testdex.utils.replaceGenderSymbols
+import com.testdex.utils.toTitleCaseWithoutHyphen
 
 @Composable
 fun PokemonInfoCard(
@@ -141,7 +143,9 @@ fun PokemonInfoCard(
             SubcomposeAsyncImage(
                 modifier = Modifier.fillMaxWidth(),
                 model = pokemon.sprite.officialArtworkURI,
-                contentDescription = "${pokemon.name} official artwork",
+                contentDescription = "${pokemon.name
+                    .replaceGenderSymbols()
+                    .toTitleCaseWithoutHyphen()} official artwork",
                 alignment = Alignment.Center,
                 loading = { TestdexCircularProgressIndicator() }
             )
@@ -172,7 +176,12 @@ fun PokemonInfoCard(
                 )
             )
             pokemon.abilities.find { !it.isHidden }?.let {
-                InfoRow(titleResId = R.string.ability_text, info = it.name)
+                InfoRow(
+                    titleResId = R.string.ability_text,
+                    info = it.name
+                        .replaceGenderSymbols()
+                        .toTitleCaseWithoutHyphen()
+                )
             }
             TestdexHorizontalDivider(
                 modifier = Modifier.padding(
@@ -181,7 +190,12 @@ fun PokemonInfoCard(
                 )
             )
             pokemon.abilities.find { it.isHidden }?.let {
-                InfoRow(titleResId = R.string.hidden_ability_text, info = it.name)
+                InfoRow(
+                    titleResId = R.string.hidden_ability_text,
+                    info = it.name
+                        .replaceGenderSymbols()
+                        .toTitleCaseWithoutHyphen()
+                )
                 TestdexHorizontalDivider(
                     modifier = Modifier.padding(
                         horizontal = dimensionResource(id = R.dimen.screen_padding),

@@ -34,7 +34,6 @@ import com.testdex.ui.theme.PsychicTypeColor
 import com.testdex.ui.theme.RockTypeColor
 import com.testdex.ui.theme.SteelTypeColor
 import com.testdex.ui.theme.WaterTypeColor
-import com.testdex.utils.replaceGenderSymbols
 
 // TODO Deal with domain errors
 
@@ -102,7 +101,7 @@ fun List<Stat>.toStatsUIModel() = map { it.toStatUIModel() }
 
 fun Pokemon.toPokemonUIModel() = PokemonUIModel(
     pokedexOrder = pokedexOrder,
-    name = name.replaceGenderSymbols(),
+    name = name,
     height = height,
     weight = weight,
     types = types.toTypesUIModel(),
