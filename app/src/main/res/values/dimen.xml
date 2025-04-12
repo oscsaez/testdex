@@ -27,7 +27,6 @@
     <!-- Height -->
     <dimen name="stat_header_height">40dp</dimen>
     <dimen name="linear_progress_indicator_height">8dp</dimen>
-    <dimen name="pokemon_image_height">200dp</dimen>
 
     <!-- Width -->
     <dimen name="circular_progress_indicator_width">6dp</dimen>
