@@ -9,6 +9,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.lifecycleScope
+import com.testdex.ui.MainViewModel
 import com.testdex.ui.TestdexScaffold
 import com.testdex.ui.managers.UserPreferences
 import com.testdex.ui.model.ThemeColor
@@ -32,6 +33,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val mainViewModel: MainViewModel by viewModels()
         val pokedexViewModel: PokedexViewModel by viewModels()
 
         lifecycleScope.launch {
@@ -59,7 +61,9 @@ class MainActivity : ComponentActivity() {
                 if (pokedexViewModelState.loading) {
                     SplashScreen(progress = pokedexViewModelState.pokemonProgress)
                 } else {
-                    TestdexScaffold()
+                    val mainViewModelState by mainViewModel.state.collectAsState()
+
+                    TestdexScaffold(isConnected = mainViewModelState.isConnected)
                 }
             }
         }

@@ -4,6 +4,11 @@
     <!-- General -->
     <string name="two_points_format">%1$s:</string>
     <string name="not_implemented_text">Not implemented</string>
+    <string name="ok_text">OK</string>
+
+    <!-- Network -->
+    <string name="no_network_connection_title">Disconnected</string>
+    <string name="no_network_connection_text">It looks like there is no network connection. Please check your connection and try again.</string>
 
     <!-- Top Bar -->
     <string name="search_top_bar_text">Search</string>

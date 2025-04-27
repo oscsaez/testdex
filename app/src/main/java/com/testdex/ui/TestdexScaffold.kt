@@ -1,11 +1,11 @@
 package com.testdex.ui
 
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
+import com.testdex.ui.composables.NoNetworkConnectionDialog
 import com.testdex.ui.composables.TestdexBottomBar
 import com.testdex.ui.navigation.Navigation
 import com.testdex.ui.navigation.TestdexScreen
@@ -18,10 +18,10 @@ val screens: List<TestdexScreen> = listOf(
     TestdexScreen.TestdexSettingsScreen
 )
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TestdexScaffold(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    isConnected: Boolean
 ) {
     val navController = rememberNavController()
 
@@ -40,5 +40,9 @@ fun TestdexScaffold(
             modifier = Modifier.padding(innerPadding),
             navController = navController
         )
+
+        if (!isConnected) {
+            NoNetworkConnectionDialog()
+        }
     }
 }
