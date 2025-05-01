@@ -9,8 +9,9 @@
     <dimen name="stat_indicator_thickness">10dp</dimen>
 
     <!-- Padding -->
-    <dimen name="screen_padding">16dp</dimen>
     <dimen name="section_padding">24dp</dimen>
+    <dimen name="screen_padding">16dp</dimen>
+    <dimen name="big_regular_padding">12dp</dimen>
     <dimen name="regular_padding">8dp</dimen>
     <dimen name="less_regular_padding">4dp</dimen>
 
