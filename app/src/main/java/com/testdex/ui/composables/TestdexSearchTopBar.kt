@@ -118,6 +118,7 @@ fun TestdexSearchTopBar(
                     ) {
                         IconButton(
                             onClick = {
+                                // TODO Change tooltip component to can set default timeout
                                 scope.launch { tooltipState.show(MutatePriority.UserInput) }
                             }
                         ) {
