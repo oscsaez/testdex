@@ -1,12 +1,12 @@
 package com.testdex.ui.screens.pokedex
 
 import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -27,7 +27,6 @@ import com.testdex.ui.composables.TestdexHorizontalDivider
 import com.testdex.ui.composables.TestdexSearchTopBar
 import com.testdex.ui.model.PokemonBasicsUIModel
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PokedexScreen(
     modifier: Modifier = Modifier,
@@ -45,7 +44,14 @@ fun PokedexScreen(
                 rightActions = {
                     IconButton(
                         modifier = Modifier.padding(end = dimensionResource(id = R.dimen.regular_padding)),
-                        onClick = { /*TODO*/ }
+                        onClick = {
+                            // TODO Open filters
+                            Toast.makeText(
+                                context,
+                                context.getString(R.string.development_in_progress_text),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     ) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_filter),
@@ -54,7 +60,14 @@ fun PokedexScreen(
                         )
                     }
                 },
-                onAppIconButtonClick = { /*TODO*/ }
+                onAppIconButtonClick = {
+                    // TODO Reset all filters and search?
+                    Toast.makeText(
+                        context,
+                        context.getString(R.string.development_in_progress_text),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             ) { input ->
                 filteredPokemonList = searchByPokedexOrderOrNameOrType(
                     context,
